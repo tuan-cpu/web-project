@@ -1,0 +1,70 @@
+@import '../../common/colors.scss';
+.card-item{
+    background-color: $secondary-color;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-height: 500px;
+    height: 100%;
+    margin: 10px;
+
+    &:hover{
+        transform: scale(1.1);
+        transition: all 0.3s;
+    }
+}
+
+.card-top{
+    height: 300px;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.card-bottom{
+    padding: 20px;
+}
+
+.card-info{
+    color: $font-primary;
+    h4{
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+}
+
+.card-skeleton-item{
+    cursor: pointer;
+    transition: all 0.3s;
+    max-width: 200px;
+    min-height: 500px;
+    height: 100%;
+    margin: 10px;
+
+    &:hover{
+        transform: scale(1.1);
+        transition: all 0.3s;
+    }
+}
+
+.card-skeleton-top{
+    height: 300px;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.card-skeleton-bottom{
+    padding-top: 20px;
+}
+
+.card-skeleton-info{
+    h4{
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+}
