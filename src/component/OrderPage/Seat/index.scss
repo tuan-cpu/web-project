@@ -34,7 +34,7 @@ table{
 	border-radius: 8px;
 	background-color: #d6d8e7;
     float: left!important;
-    margin-right: 1rem!important;
+    margin-right: 0.5rem!important;
 }
 .selectBox {
 	width: 26px;
@@ -42,7 +42,7 @@ table{
 	border-radius: 8px;
 	background-color: #5f2eea;
     float: left!important;
-    margin-right: 1rem!important;
+    margin-right: 0.5rem!important;
 }
 .loveBox {
 	width: 26px;
@@ -50,7 +50,7 @@ table{
 	border-radius: 8px;
 	background-color: #f589d7;
     float: left!important;
-    margin-right: 1rem!important;
+    margin-right: 0.5rem!important;
 }
 .soldBox {
 	width: 26px;
@@ -58,7 +58,7 @@ table{
 	border-radius: 8px;
 	background-color: #6e7191;
     float: left!important;
-    margin-right: 1rem!important;
+    margin-right: 0.5rem!important;
 }
 .checkout button {
 	border-radius: 16px !important;
@@ -83,4 +83,9 @@ table{
 	padding-top: 10px;
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
+}
+.seat-key-element{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

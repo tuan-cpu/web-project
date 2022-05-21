@@ -69,19 +69,19 @@ const Seat = () => {
       </table>
       <p className="text-link-lg pt-4">Seating key</p>
       <div className="seat-key">
-        <div>
+        <div className="seat-key-element">
           <div className="availableBox" />
           Available
         </div>
-        <div>
+        <div className="seat-key-element">
           <div className="selectBox" />
           Selected
         </div>
-        <div>
+        <div className="seat-key-element">
           <div className="soldBox" />
           Sold
         </div>
-        <div>
+        <div className="seat-key-element">
           <div className="loveBox" />
           Love nest
         </div>
