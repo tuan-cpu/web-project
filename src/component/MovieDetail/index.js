@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./index.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAsyncMovieOrShowDetail,
@@ -68,6 +68,9 @@ const MovieDetail = () => {
           </div>
           <div className="section-right">
             <img src={data.Poster} alt={data.Title} />
+            <Link to={`/order/${imdbID}`}>
+            <button>Book a Seat</button>
+            </Link>
           </div>
         </>
       )}

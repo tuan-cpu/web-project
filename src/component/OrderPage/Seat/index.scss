@@ -1,0 +1,86 @@
+.line-screen {
+	height: 8px;
+	background: #9570fe;
+	border-radius: 8px;
+}
+tbody tr td input[type="checkbox"] {
+	/* width: 20px; */
+	margin: 10px;
+}
+tbody tr td input[type="checkbox"]:before {
+	cursor: pointer;
+	margin-top: -13px;
+	content: "";
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 8px;
+	background-color: #d6d8e7;
+}
+tbody tr td input[type="checkbox"]:checked:before {
+	background-color: #5f2eea;
+	font-size: 15px;
+}
+
+table{
+	padding-top: 10px;
+}
+
+.availableBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #d6d8e7;
+    float: left!important;
+    margin-right: 1rem!important;
+}
+.selectBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #5f2eea;
+    float: left!important;
+    margin-right: 1rem!important;
+}
+.loveBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #f589d7;
+    float: left!important;
+    margin-right: 1rem!important;
+}
+.soldBox {
+	width: 26px;
+	height: 26px;
+	border-radius: 8px;
+	background-color: #6e7191;
+    float: left!important;
+    margin-right: 1rem!important;
+}
+.checkout button {
+	border-radius: 16px !important;
+	min-height: 56px;
+}
+.order-seat {
+	border-radius: 24px !important;
+}
+
+.pl-3, .px-3{
+    padding-left: 1rem!important;
+}
+.pt-4, .py-4{
+    padding-top: 1.5rem!important;
+}
+.text-link-lg{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.seat-key{
+	padding-top: 10px;
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+}

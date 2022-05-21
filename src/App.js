@@ -6,6 +6,7 @@ import Footer from "./component/Footer";
 import Home from "./component/Home";
 import MovieDetail from "./component/MovieDetail";
 import PageNotFound from "./component/PageNotFound";
+import OrderPage from './component/OrderPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/:keyword' exact element={<Home/>}/>
         <Route path='/movie/:imdbID' element={<MovieDetail/>}/>
+        <Route path='/order/:imdbID' element={<OrderPage/>}/>
         <Route path='*' element={<PageNotFound/>}/>
         </Routes>
         </div>
