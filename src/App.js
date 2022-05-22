@@ -7,6 +7,7 @@ import Home from "./component/Home";
 import MovieDetail from "./component/MovieDetail";
 import PageNotFound from "./component/PageNotFound";
 import OrderPage from './component/OrderPage';
+import Payment from './component/Payment';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/movie/:imdbID' element={<MovieDetail/>}/>
         <Route path='/order/:imdbID' element={<OrderPage/>}/>
         <Route path='*' element={<PageNotFound/>}/>
+        <Route path='/payment' element={<Payment/>}/>
         </Routes>
         </div>
         <Footer></Footer>

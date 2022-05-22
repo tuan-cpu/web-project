@@ -1,0 +1,19 @@
+.payment-section{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    .section-wrapper{
+        flex: 0 50%;
+        max-width: 50%;
+        padding-top: 1.5rem !important;
+        padding: 10px;
+    }
+    @media (max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+        .section-wrapper{
+            max-width: 100%;
+        }
+    }
+}
