@@ -13,10 +13,8 @@
     flex-direction: row;
     justify-content: space-between;
 }
-// .movie-container{
-//     display: grid;
-//     display: --ms-grid;
-//     grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
-//     -ms-grid-column: repeat(auto-fill,minmax(220px,1fr));
-//     grid-column-gap: 15px;
-// }
+.movie-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    grid-column-gap: 15px;
+}

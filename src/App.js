@@ -9,6 +9,7 @@ import PageNotFound from "./component/PageNotFound";
 import OrderPage from './component/OrderPage';
 import Payment from './component/Payment';
 import Ticket from './component/Ticket';
+import AllMovie from './component/AllMovie/AllMovie';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <div className='container'>
         <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/all/:category' element={<AllMovie/>}/>
         <Route path='/:keyword' exact element={<Home/>}/>
         <Route path='/movie/:imdbID' element={<MovieDetail/>}/>
         <Route path='/order/:imdbID' element={<OrderPage/>}/>

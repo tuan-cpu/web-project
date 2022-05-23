@@ -9,6 +9,7 @@ import MovieCard from "../MovieCard";
 import Slider from "react-slick";
 import "./index.scss";
 import CardSkeleton from "../MovieCard/cardSkeleton";
+import { Link } from "react-router-dom";
 const MovieListing = () => {
   const settings = {
     dots: false,
@@ -88,7 +89,10 @@ const MovieListing = () => {
   return (
     <div className="movie-wrapper">
       <div className="movie-list">
-        <h2>Movies</h2>
+        <div className="movie-list-label">
+          <h2>Movies</h2>
+          <Link to="/all/movies">See All</Link>
+        </div>
         {loader ? (
           <div className="movie-container">
             <Slider {...settings}>
@@ -102,7 +106,10 @@ const MovieListing = () => {
         )}
       </div>
       <div className="show-list">
-        <h2>Shows</h2>
+        <div className="movie-list-label">
+          <h2>Shows</h2>
+          <Link to="/all/shows">See All</Link>
+        </div>
         {loader ? (
           <div className="movie-container">
             <Slider {...settings}>
