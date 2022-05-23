@@ -8,6 +8,7 @@ import MovieDetail from "./component/MovieDetail";
 import PageNotFound from "./component/PageNotFound";
 import OrderPage from './component/OrderPage';
 import Payment from './component/Payment';
+import Ticket from './component/Ticket';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/order/:imdbID' element={<OrderPage/>}/>
         <Route path='*' element={<PageNotFound/>}/>
         <Route path='/payment' element={<Payment/>}/>
+        <Route path='/ticket' element={<Ticket/>}/>
         </Routes>
         </div>
         <Footer></Footer>
