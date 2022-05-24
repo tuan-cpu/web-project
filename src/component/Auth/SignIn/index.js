@@ -10,7 +10,7 @@ const SignIn = () => {
           <p className="bold-text-extra">Sign In</p>
           <form>
             <div className="form-group">
-              <label className="form-label">Full Name</label>
+              <label className="form-label">Email</label>
               <input
                 placeholder="Email"
                 type={"email"}
@@ -32,6 +32,9 @@ const SignIn = () => {
           </div>
           <Link to="/signup">
             <p className="link-text">Don't have an account?Click here</p>
+          </Link>
+          <Link to="/recover">
+            <p className="link-text">Have trouble?Click here</p>
           </Link>
         </div>
       </div>

@@ -12,6 +12,7 @@ import Ticket from './component/Ticket';
 import AllMovie from './component/AllMovie/AllMovie';
 import SignIn from './component/Auth/SignIn';
 import SignUp from './component/Auth/SignUp';
+import Recover from './component/Auth/SignIn/Recover';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/ticket' element={<Ticket/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/recover' element={<Recover/>}/>
         </Routes>
         </div>
         <Routes>
