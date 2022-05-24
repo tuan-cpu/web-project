@@ -5,7 +5,7 @@ import barcode from "../../image/barcode.svg";
 const Ticket = () => {
   return (
     <div className="ticket-section">
-      <div className="container">
+      <div className="ticket-container">
         <div className="card">
           <div className="ticket-body">
             <p className="bold-text-center">Proof of Payment</p>

@@ -10,6 +10,8 @@ import OrderPage from './component/OrderPage';
 import Payment from './component/Payment';
 import Ticket from './component/Ticket';
 import AllMovie from './component/AllMovie/AllMovie';
+import SignIn from './component/Auth/SignIn';
+import SignUp from './component/Auth/SignUp';
 
 
 function App() {
@@ -27,8 +29,13 @@ function App() {
         <Route path='*' element={<PageNotFound/>}/>
         <Route path='/payment' element={<Payment/>}/>
         <Route path='/ticket' element={<Ticket/>}/>
+        <Route path='/signin' element={<SignIn/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
         </Routes>
         </div>
+        <Routes>
+          
+        </Routes>
         <Footer></Footer>
       </Router>
     </div>
