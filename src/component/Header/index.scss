@@ -35,11 +35,11 @@
         font-size: 20px;
         cursor: pointer;
         height: 38px;
-        border-radius: 20px;
     }
 
     input{
-        border-radius: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
         font-size: 18px;
         width: 100%;
         padding: 5px 5px 5px 10px;

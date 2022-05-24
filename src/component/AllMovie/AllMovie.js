@@ -38,18 +38,18 @@ const AllMovie = () => {
     );
   return(
       <div className="movie-wrapper">
-          <div className="movie-list">
+          <div className="movie-list-all">
               {loader?(
-          <div className="movie-container">
+          <div className="movie-container-all">
               <CardSkeleton />
           </div>
         ) :(
             category === 'movies'?(
-                <div className="movie-container">
+                <div className="movie-container-all">
                     {renderMovies}
                 </div>
             ):(
-                <div className="movie-container">
+                <div className="movie-container-all">
                     {renderShows}
                 </div>
             )

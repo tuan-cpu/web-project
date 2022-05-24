@@ -1,6 +1,6 @@
 @import "../../common/colors.scss";
 
-.movie-list, .show-list{
+.movie-list-all, .show-list-all{
     margin: 20px 0px;
     h2{
         color: $font-secondary;
@@ -8,12 +8,12 @@
         font-weight: 400;
     }
 }
-.movie-list-label{
+.movie-list-label-all{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.movie-container{
+.movie-container-all{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
     grid-column-gap: 15px;
