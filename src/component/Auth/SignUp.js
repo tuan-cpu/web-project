@@ -6,7 +6,7 @@ const SignUp = () => {
     <div className="sign-in-section">
       <div className="login-body">
         <div className="inner-body">
-          <p className="bold-text-extra">Sign In</p>
+          <p className="bold-text-extra">Sign Up</p>
           <form>
             <div className="form-group">
               <label className="form-label">Full Name</label>

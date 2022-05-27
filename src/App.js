@@ -12,7 +12,7 @@ import Ticket from './component/Ticket';
 import AllMovie from './component/AllMovie/AllMovie';
 import SignIn from './component/Auth/SignIn';
 import SignUp from './component/Auth/SignUp';
-import Recover from './component/Auth/SignIn/Recover';
+import Recover from './component/Auth/Recover';
 
 
 function App() {
