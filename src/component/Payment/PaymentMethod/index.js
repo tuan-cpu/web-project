@@ -1,8 +1,10 @@
 import React from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PaymentMethod = () => {
+  const navigate = useNavigate();
   return (
     <div className="payment-method-section">
       <p className="bold-text">Payment Method</p>
@@ -214,9 +216,7 @@ const PaymentMethod = () => {
         </div>
       </div>
       <div className="checkout">
-        <Link to="/order">
-          <button>Previous Step</button>
-        </Link>
+        <button onClick={() => navigate(-1)}>Previous Step</button>
         <Link to="ticket">
           <button>Pay Your Order</button>
         </Link>
