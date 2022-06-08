@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -34,7 +36,7 @@ const SignUp = () => {
             </div>
           </form>
           <div className="checkout">
-            <button>Cancel</button>
+            <button onClick={() => navigate(-1)}>Cancel</button>
             <button>Sign Up</button>
           </div>
         </div>

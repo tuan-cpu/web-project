@@ -41,7 +41,9 @@ const Header = () => {
         </form>
       </div>
       <div className="user-image">
+        <Link to="/signin">
         <img src={user} alt="user" />
+        </Link>
       </div>
     </div>
   );

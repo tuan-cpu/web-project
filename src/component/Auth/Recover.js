@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 const Recover = () => {
+  const navigate = useNavigate();
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -18,7 +20,7 @@ const Recover = () => {
             </div>
           </form>
           <div className="checkout">
-            <button>Cancel</button>
+            <button onClick={() => navigate(-1)}>Cancel</button>
             <button>Submit</button>
           </div>
         </div>

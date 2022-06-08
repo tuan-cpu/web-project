@@ -29,7 +29,7 @@ const OrderInfo = ({ movie }) => {
         <div className="info-bot">
           <div className="text-section">
             <p className="bold-text-md">Total Payment</p>
-            <p>$300</p>
+            <p className="bold-text">$300</p>
           </div>
         </div>
       </div>
