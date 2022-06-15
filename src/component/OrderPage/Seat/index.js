@@ -1,7 +1,8 @@
 import React from "react";
 import "./index.scss";
 
-const Seat = () => {
+const Seat = (props) => {
+  const {selected,setSelected} = props;
   const seatNum = [];
   for (let i = 1; i < 15; i++) {
     if (i === 8) {
@@ -10,18 +11,170 @@ const Seat = () => {
     seatNum.push(<td className="pl-3">{i}</td>);
   }
 
-  const seat = [];
+  const seatA = [];
   for (let i = 1; i < 15; i++) {
     if (i === 8) {
-      seat.push(<div className="px-3"></div>);
+      seatA.push(<div className="px-3"></div>);
     }
-    seat.push(
+    seatA.push(
       <td>
         <input
           type="checkbox"
           value={`A${i}`}
           name={`A${i}`}
-          // onChange={}
+          onChange={()=>{
+            if(!selected.includes(`A${i}`))setSelected([...selected,`A${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `A${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatB = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatB.push(<div className="px-3"></div>);
+    }
+    seatB.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`B${i}`}
+          name={`B${i}`}
+          onChange={()=>{
+            if(!selected.includes(`B${i}`))setSelected([...selected,`B${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `B${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatC = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatC.push(<div className="px-3"></div>);
+    }
+    seatC.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`C${i}`}
+          name={`C${i}`}
+          onChange={()=>{
+            if(!selected.includes(`C${i}`))setSelected([...selected,`C${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `C${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatD = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatD.push(<div className="px-3"></div>);
+    }
+    seatD.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`D${i}`}
+          name={`D${i}`}
+          onChange={()=>{
+            if(!selected.includes(`D${i}`))setSelected([...selected,`D${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `D${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatE = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatE.push(<div className="px-3"></div>);
+    }
+    seatE.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`E${i}`}
+          name={`E${i}`}
+          onChange={()=>{
+            if(!selected.includes(`E${i}`))setSelected([...selected,`E${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `E${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatF = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatF.push(<div className="px-3"></div>);
+    }
+    seatF.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`F${i}`}
+          name={`F${i}`}
+          onChange={()=>{
+            if(!selected.includes(`F${i}`))setSelected([...selected,`F${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `F${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
+        />
+      </td>
+    );
+  }
+  const seatG = [];
+  for (let i = 1; i < 15; i++) {
+    if (i === 8) {
+      seatG.push(<div className="px-3"></div>);
+    }
+    seatG.push(
+      <td>
+        <input
+          type="checkbox"
+          value={`G${i}`}
+          name={`G${i}`}
+          onChange={()=>{
+            if(!selected.includes(`G${i}`))setSelected([...selected,`G${i}`]);
+            else{
+              var temp_array = selected.filter((value)=>{
+                return value !== `G${i}`;
+              })
+              setSelected(temp_array);
+            }
+          }}
         />
       </td>
     );
@@ -33,31 +186,31 @@ const Seat = () => {
         <tbody>
           <tr>
             <td>A</td>
-            {seat}
+            {seatA}
           </tr>
           <tr>
             <td>B</td>
-            {seat}
+            {seatB}
           </tr>
           <tr>
             <td>C</td>
-            {seat}
+            {seatC}
           </tr>
           <tr>
             <td>D</td>
-            {seat}
+            {seatD}
           </tr>
           <tr>
             <td>E</td>
-            {seat}
+            {seatE}
           </tr>
           <tr>
             <td>F</td>
-            {seat}
+            {seatF}
           </tr>
           <tr>
             <td>G</td>
-            {seat}
+            {seatG}
           </tr>
         </tbody>
         <tbody>

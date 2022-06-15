@@ -2,7 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 import "./index.scss";
 
-const OrderInfo = ({ movie }) => {
+const OrderInfo = ({ movie,selected }) => {
   return (
     <div className="info-section">
       <p className="bold-text">Order Info</p>
@@ -22,7 +22,7 @@ const OrderInfo = ({ movie }) => {
           </div>
           <div className="text-section">
             <p>Seats</p>
-            <p>A1 A2 A3</p>
+            <p>{selected.map((seat)=> seat+' ')}</p>
           </div>
         </div>
         <hr />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,12 +20,16 @@ const OrderPage = () => {
       dispatch(removeSelectedMovieOrShow);
     };
   }, [dispatch, imdbID]);
+  const [selected,setSelected] = useState([]);
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
   return (
     <div className="order-section">
       <div className="order-section-left">
       <p className="bold-text">Choose Your Seat</p>
         <div className="top">
-        <OrderSeat />
+        <OrderSeat selected={selected} setSelected={setSelected}/>
         </div>
         <div className="checkout">
           <Link to="/">
@@ -37,7 +41,7 @@ const OrderPage = () => {
         </div>
       </div>
       <div className="order-section-right">
-        <OrderInfo key={data.imdbID} movie={data} />
+        <OrderInfo key={data.imdbID} movie={data} selected={selected} />
       </div>
     </div>
   );

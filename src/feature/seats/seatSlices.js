@@ -1,14 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit/";
 
-export const fetchAsyncSelectedSeats =
-  createAsyncThunk();
-  // "movies/fetchAsyncMovies",
-  // async (term) => {
-  //   const response = await movieApi.get(
-  //     `?apiKey=${APIKey}&s=${term}&type=movie`
-  //   );
-  //   return response.data;
-  // }
+export const fetchAsyncSelectedSeats = createAsyncThunk();
 
 export const fetchAsyncLoveSeats = createAsyncThunk();
 
