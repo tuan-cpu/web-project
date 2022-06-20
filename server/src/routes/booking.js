@@ -31,8 +31,7 @@ router.post('/book', auth, async (req, res) => {
     }
     const transaction = Transaction({
         user: userId,
-        movie: schedule.movie,
-        cinema: schedule.cinema,
+        schedule: scheduleId,
         countTicket: seats.length,
         amount: amount,
         paymentMethod: paymentMethodId

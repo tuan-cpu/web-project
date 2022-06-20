@@ -4,11 +4,8 @@ const Layout = require('../models/layout')
 const auth = require('../middleware/auth')
 const SeatType = require('../models/seatType')
 
-router.get('/layout', auth, async (req, res) => {
-    if (req.user.role != 'admin') {
-        res.status(401).send("No permission")
-        return
-    }
+router.get('/layout', async (req, res) => {
+    
     const layouts = await Layout.find().populate([
         {
             path: "seats.seatType",
@@ -27,6 +24,11 @@ router.get('/layout', auth, async (req, res) => {
 
 
 router.post('/layout', auth, async (req, res) => {
+    if (req.user.role != 'admin') {
+        res.status(401).send("No permission")
+        return
+    }
+    
     let layoutData = req.body
     let seatData = layoutData.seats
     let seats = []

@@ -6,15 +6,10 @@ const transactionSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    movie: {
+    schedule: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Movie'
-    },
-    cinema: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Cinema'
+        ref: 'Schedule'
     },
     countTicket: {
         type: Number,
