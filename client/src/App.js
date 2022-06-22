@@ -26,10 +26,10 @@ function App() {
         <Route path='/all/:category' element={<AllMovie/>}/>
         <Route path='/:keyword' exact element={<Home/>}/>
         <Route path='/movie/:imdbID' element={<MovieDetail/>}/>
-        <Route path='/order/:imdbID' element={<OrderPage/>}/>
+        <Route path='/order' element={<OrderPage/>}/>
         <Route path='*' element={<PageNotFound/>}/>
-        <Route path='/order/:imdbID/payment' element={<Payment/>}/>
-        <Route path='/order/:imdbID/payment/ticket' element={<Ticket/>}/>
+        <Route path='payment' element={<Payment/>}/>
+        <Route path='/ticket' element={<Ticket/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/recover' element={<Recover/>}/>

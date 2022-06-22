@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAsyncMovieOrShowDetail,
@@ -11,7 +11,7 @@ import OrderSeat from "./OrderSeat";
 import OrderInfo from "./OrderInfo";
 
 const OrderPage = () => {
-  const { imdbID } = useParams();
+  const imdbID = localStorage.getItem('imdbID');
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
   useEffect(() => {
@@ -20,23 +20,23 @@ const OrderPage = () => {
       dispatch(removeSelectedMovieOrShow);
     };
   }, [dispatch, imdbID]);
-  const [selected,setSelected] = useState([]);
+  const [selected, setSelected] = useState([]);
   useEffect(() => {
     console.log(selected);
   }, [selected]);
   return (
     <div className="order-section">
       <div className="order-section-left">
-      <p className="bold-text">Choose Your Seat</p>
+        <p className="bold-text">Choose Your Seat</p>
         <div className="top">
-        <OrderSeat selected={selected} setSelected={setSelected}/>
+          <OrderSeat selected={selected} setSelected={setSelected} />
         </div>
         <div className="checkout">
           <Link to="/">
             <button>Change your movie</button>
           </Link>
-          <Link to="payment">
-            <button>Checkout now</button>
+          <Link to="/payment">
+            <button disabled={selected.length === 0}>Checkout now</button>
           </Link>
         </div>
       </div>

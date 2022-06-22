@@ -1,7 +1,6 @@
 import React from "react";
 import {
   getAllMovies,
-  getAllShows,
   getMoviesLoader,
 } from "../../feature/movies/movieSlice";
 import { useSelector } from "react-redux";
@@ -63,11 +62,9 @@ const MovieListing = () => {
     ],
   };
   const movies = useSelector(getAllMovies);
-  const shows = useSelector(getAllShows);
   const loader = useSelector(getMoviesLoader);
   console.log(loader);
-  let renderMovies,
-    renderShows = "";
+  let renderMovies = "";
   renderMovies =
     movies.Response === "True" ? (
       movies.Search.map((movie, index) => (
@@ -76,14 +73,6 @@ const MovieListing = () => {
     ) : (
       <div className="movie-error">
         <h3>{movies.Error}</h3>
-      </div>
-    );
-  renderShows =
-    shows.Response === "True" ? (
-      shows.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
-    ) : (
-      <div className="movie-error">
-        <h3>{shows.Error}</h3>
       </div>
     );
   return (
@@ -101,24 +90,7 @@ const MovieListing = () => {
           </div>
         ) : (
           <div className="movie-container">
-            <Slider {...settings}>{renderMovies}</Slider>
-          </div>
-        )}
-      </div>
-      <div className="show-list">
-        <div className="movie-list-label">
-          <h2>Shows</h2>
-          <Link to="/all/shows">See All</Link>
-        </div>
-        {loader ? (
-          <div className="movie-container">
-            <Slider {...settings}>
-              <CardSkeleton />
-            </Slider>
-          </div>
-        ) : (
-          <div className="movie-container">
-            <Slider {...settings}>{renderShows}</Slider>
+            {renderMovies.length > 6?<Slider {...settings}>{renderMovies}</Slider>:<div className="listing">{renderMovies}</div>}
           </div>
         )}
       </div>

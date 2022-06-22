@@ -1,8 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./index.scss";
 import barcode from "../../image/barcode.svg";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchAsyncMovieOrShowDetail,
+  getSelectedMovieOrShow,
+  removeSelectedMovieOrShow,
+} from "../../feature/movies/movieSlice";
 
 const Ticket = () => {
+  var seat = localStorage.getItem('seats');
+  var seat_count = localStorage.getItem('seat_count');
+  var total_payment = localStorage.getItem('total_payment');
+  const imdbID = localStorage.getItem('imdbID');
+  const dispatch = useDispatch();
+  const data = useSelector(getSelectedMovieOrShow);
+  useEffect(() => {
+    dispatch(fetchAsyncMovieOrShowDetail(imdbID));
+    return () => {
+      dispatch(removeSelectedMovieOrShow);
+    };
+  }, [dispatch, imdbID]);
   return (
     <div className="ticket-section">
       <div className="ticket-container">
@@ -19,7 +37,7 @@ const Ticket = () => {
                     </div>
                     <div className="card-body">
                       <p className="info">Movie</p>
-                      <p className="info-value">A title</p>
+                      <p className="info-value">{data.Title}</p>
                       <div className="row-inner">
                         <div className="col-4">
                           <p className="info">Date</p>
@@ -35,15 +53,15 @@ const Ticket = () => {
                         </div>
                         <div className="col-4">
                           <p className="info">Count</p>
-                          <p className="info-value">3 pieces</p>
+                          <p className="info-value">{seat_count} piece(s)</p>
                         </div>
                         <div className="col-4">
                           <p className="info">Seats</p>
-                          <p className="info-value">A1 A2 A3</p>
+                          <p className="info-value">{seat}</p>
                         </div>
                         <div className="col-4">
                           <p className="info">Total Payment</p>
-                          <p className="info-value-price">$300</p>
+                          <p className="info-value-price">${total_payment}</p>
                         </div>
                       </div>
                     </div>
@@ -59,7 +77,7 @@ const Ticket = () => {
                         <div className="col-10">
                           <div className="col-6">
                             <p className="info">Movie</p>
-                            <p className="info-value">A title</p>
+                            <p className="info-value">{data.Title}</p>
                           </div>
                           <div className="col-6">
                             <p className="info">Date</p>
@@ -75,11 +93,11 @@ const Ticket = () => {
                           </div>
                           <div className="col-6">
                             <p className="info">Count</p>
-                            <p className="info-value">3 pieces</p>
+                            <p className="info-value">{seat_count} piece(s)</p>
                           </div>
                           <div className="col-6">
                             <p className="info">Seats</p>
-                            <p className="info-value">A1 A2 A3</p>
+                            <p className="info-value">{seat}</p>
                           </div>
                         </div>
                         <div className="col-2">

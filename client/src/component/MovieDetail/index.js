@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./index.scss";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAsyncMovieOrShowDetail,
@@ -8,6 +8,7 @@ import {
   removeSelectedMovieOrShow,
 } from "../../feature/movies/movieSlice";
 const MovieDetail = () => {
+  const navigate = useNavigate();
   const { imdbID } = useParams();
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
@@ -20,7 +21,7 @@ const MovieDetail = () => {
   return (
     <div className="movie-section">
       {Object.keys(data).length === 0 ? (
-        <div>{'...Loading'}</div>
+        <div>{"...Loading"}</div>
       ) : (
         <>
           <div className="section-left">
@@ -68,9 +69,14 @@ const MovieDetail = () => {
           </div>
           <div className="section-right">
             <img src={data.Poster} alt={data.Title} />
-            <Link to={`/order/${imdbID}`}>
-            <button>Book a Seat</button>
-            </Link>
+            <button
+              onClick={() => {
+                localStorage.setItem('imdbID',imdbID)
+                navigate("/order");
+              }}
+            >
+              Book a Seat
+            </button>
           </div>
         </>
       )}

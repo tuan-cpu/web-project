@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Moment from "react-moment";
 import "./index.scss";
 
 const OrderInfo = ({ movie,selected }) => {
+  var ticket_price = 100;
+  var seat_count = selected.length;
+  useEffect(() => {
+    var date = new Date();
+    localStorage.setItem('total_payment',seat_count*ticket_price)
+    localStorage.setItem('order_date',date);
+  }, [seat_count,ticket_price]);
   return (
     <div className="info-section">
       <p className="bold-text">Order Info</p>
@@ -13,8 +20,8 @@ const OrderInfo = ({ movie,selected }) => {
             <p>{movie.Title}</p>
           </div>
           <div className="text-section">
-            <Moment format="DD MMMM YYYY">{21 / 5 / 2022}</Moment>
-            <Moment format="DD MMMM YYYY">Date</Moment>
+            <p>Date</p>
+            <Moment format="DD MMMM YYYY">1976-04-19T12:59-0500</Moment>
           </div>
           <div className="text-section">
             <p>One ticket Price</p>
@@ -29,7 +36,7 @@ const OrderInfo = ({ movie,selected }) => {
         <div className="info-bot">
           <div className="text-section">
             <p className="bold-text-md">Total Payment</p>
-            <p className="bold-text">$300</p>
+            <p className="bold-text">${seat_count*ticket_price}</p>
           </div>
         </div>
       </div>

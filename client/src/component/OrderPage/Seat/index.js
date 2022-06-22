@@ -1,9 +1,13 @@
-import React from "react";
+import {React, useEffect} from "react";
 import "./index.scss";
 
 const Seat = (props) => {
   const {selected,setSelected} = props;
   const seatNum = [];
+  useEffect(() => {
+    localStorage.setItem('seats',selected);
+    localStorage.setItem('seat_count',selected.length);
+  }, [selected]);
   for (let i = 1; i < 15; i++) {
     if (i === 8) {
       seatNum.push(<div className="px-3"></div>);
@@ -31,6 +35,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`A${i}`}
         />
       </td>
     );
@@ -55,6 +60,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`B${i}`}
         />
       </td>
     );
@@ -79,6 +85,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`C${i}`}
         />
       </td>
     );
@@ -103,6 +110,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`D${i}`}
         />
       </td>
     );
@@ -127,6 +135,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`E${i}`}
         />
       </td>
     );
@@ -151,6 +160,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`F${i}`}
         />
       </td>
     );
@@ -175,6 +185,7 @@ const Seat = (props) => {
               setSelected(temp_array);
             }
           }}
+          key={`G${i}`}
         />
       </td>
     );
