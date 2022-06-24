@@ -54,6 +54,23 @@ const movieSchema = mongoose.Schema({
     }
 })
 
+movieSchema.virtual('availableSchedule', {
+    ref: 'Schedule',
+    localField: '_id',
+    foreignField: 'movie'
+})
+
+
+movieSchema.set('toObject', { virtuals: true });
+movieSchema.set('toJSON', { virtuals: true });
+
+movieSchema.method.toJSON = function() {
+    const movie = this
+    const movieObject = movie.toObject()
+
+    return movieObject
+}
+
 const Movie = mongoose.model('Movie', movieSchema)
 
 module.exports = Movie

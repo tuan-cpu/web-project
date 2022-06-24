@@ -6,6 +6,7 @@ const User = require('../models/user')
 const Genre = require('../models/genre')
 const auth = require('../middleware/auth')
 const mongoose = require('mongoose')
+const Schedule = require('../models/schedule')
 const API_KEY = process.env.TMDB_API_KEY
 
 router.get('/movies?', async (req, res) => {
@@ -31,6 +32,10 @@ router.get('/movies?', async (req, res) => {
         {
             path: "genre",
             model: Genre
+        },
+        {
+            path: "availableSchedule",
+            model: Schedule
         }
     ]).sort(sort).limit(parseInt(query.limit))
 
@@ -99,7 +104,6 @@ router.get('/nowplaying?', async (req, res) => {
         var genresId = genresObjId.map(a => a._id)
         query["genre"] = {$all: genresId}
     }
-    query["released"] = {"$gt" : new Date()}
 
     if (req.query.sortBy) {
         const parts = req.query.sortBy.split(':')
@@ -107,10 +111,19 @@ router.get('/nowplaying?', async (req, res) => {
     } else {
         sort["released"] = 'asc'
     }
+
+    const movieInSchedule = await Schedule.find().select('movie').distinct('movie')
+
+    query['_id'] = {$in: movieInSchedule}
+
     const movies = await Movie.find(query).populate([
         {
             path: "genre",
             model: Genre
+        },
+        {
+            path: "availableSchedule",
+            model: Schedule
         }
     ]).sort(sort).limit(parseInt(query.limit))
 
