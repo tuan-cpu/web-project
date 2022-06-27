@@ -1,13 +1,28 @@
 const express = require('express')
 const router = new express.Router()
 const Cinema = require('../models/cinema')
+const SeatType = require('../models/seatType')
 const auth = require('../middleware/auth')
 
 const Layout = require('../models/layout')
 
 router.get('/cinema', async (req, res) => {
     
-    //todo
+    const theaterId = req.query.theater
+
+    const cinema = await Cinema.find({theater: theaterId}).populate([
+        {
+            path: "layout.seats.seatType",
+            model: SeatType
+        },
+    ])
+
+    try {
+        res.status(201).send(cinema)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
     
 })
 
