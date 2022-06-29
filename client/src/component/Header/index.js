@@ -4,7 +4,7 @@ import user from "../../image/user.png";
 import { useDispatch } from "react-redux/es/exports";
 import {
   fetchAsyncMovies,
-  fetchAsyncShows,
+  fetchAsyncUpcomingMovies,
 } from "../../feature/movies/movieSlice";
 import "./index.scss";
 
@@ -17,7 +17,7 @@ const Header = () => {
     if (term === "") alert("Please enter search term!");
     else {
       dispatch(fetchAsyncMovies(term));
-      dispatch(fetchAsyncShows(term));
+      dispatch(fetchAsyncUpcomingMovies(term));
       setTerm("");
       navigate(`/${term}`);
     }
@@ -33,7 +33,7 @@ const Header = () => {
             type={"text"}
             value={term}
             onChange={(e) => setTerm(e.target.value)}
-            placeholder="Search for Movie and Show"
+            placeholder="Search for Movie"
           />
           <button type="submit">
             <i class="fa fa-search" />

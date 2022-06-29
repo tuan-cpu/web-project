@@ -17,7 +17,7 @@ const OrderInfo = ({ movie,selected }) => {
         <div className="info-top">
           <div className="text-section">
             <p>Title</p>
-            <p>{movie.Title}</p>
+            <p>{movie.title}</p>
           </div>
           <div className="text-section">
             <p>Date</p>

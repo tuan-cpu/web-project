@@ -2,6 +2,7 @@ import React from "react";
 import {
   getAllMovies,
   getMoviesLoader,
+  getUpcomingMovies,
 } from "../../feature/movies/movieSlice";
 import { useSelector } from "react-redux";
 import MovieCard from "../MovieCard";
@@ -62,17 +63,28 @@ const MovieListing = () => {
     ],
   };
   const movies = useSelector(getAllMovies);
+  const upcomingMovies = useSelector(getUpcomingMovies);
   const loader = useSelector(getMoviesLoader);
-  console.log(loader);
-  let renderMovies = "";
+  let renderMovies,
+    renderUpcomingMovies = "";
   renderMovies =
-    movies.Response === "True" ? (
-      movies.Search.map((movie, index) => (
+    movies.length > 0 ? (
+      movies.map((movie, index) => (
         <MovieCard key={index} data={movie} />
       ))
     ) : (
       <div className="movie-error">
         <h3>{movies.Error}</h3>
+      </div>
+    );
+  renderUpcomingMovies =
+    upcomingMovies.Response === "True" ? (
+      upcomingMovies.Search.map((movie, index) => (
+        <MovieCard key={index} data={movie} />
+      ))
+    ) : (
+      <div className="movie-error">
+        <h3>{upcomingMovies.Error}</h3>
       </div>
     );
   return (
@@ -90,7 +102,32 @@ const MovieListing = () => {
           </div>
         ) : (
           <div className="movie-container">
-            {renderMovies.length > 6?<Slider {...settings}>{renderMovies}</Slider>:<div className="listing">{renderMovies}</div>}
+            {renderMovies.length > 6 ? (
+              <Slider {...settings}>{renderMovies}</Slider>
+            ) : (
+              <div className="listing">{renderMovies}</div>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="movie-list">
+        <div className="movie-list-label">
+          <h2>Upcoming Movies</h2>
+          <Link to="/all/upcoming">See All</Link>
+        </div>
+        {loader ? (
+          <div className="movie-container">
+            <Slider {...settings}>
+              <CardSkeleton />
+            </Slider>
+          </div>
+        ) : (
+          <div className="movie-container">
+            {renderUpcomingMovies.length > 6 ? (
+              <Slider {...settings}>{renderUpcomingMovies}</Slider>
+            ) : (
+              <div className="listing">{renderUpcomingMovies}</div>
+            )}
           </div>
         )}
       </div>

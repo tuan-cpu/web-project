@@ -7,6 +7,9 @@ import {
   getSelectedMovieOrShow,
   removeSelectedMovieOrShow,
 } from "../../feature/movies/movieSlice";
+import Moment from "react-moment";
+import YoutubeEmbed from "./YoutubeEmbed";
+
 const MovieDetail = () => {
   const navigate = useNavigate();
   const { imdbID } = useParams();
@@ -35,40 +38,44 @@ const MovieDetail = () => {
                 {data.imdbVotes}
               </span>
               <span>
-                Runtime <i class="fa-solid fa-film"></i> :{data.Runtime}
+                Runtime <i class="fa-solid fa-film"></i> :{data.runtime}
               </span>
               <span>
-                Year <i class="fa-solid fa-calendar"></i> :{data.Year}
+                Year <i class="fa-solid fa-calendar"></i> : <Moment format="MMMM DD YYYY">{data.released}</Moment>
               </span>
             </div>
-            <div className="movie-plot">{data.Plot}</div>
+            <div className="movie-plot">{data.description}</div>
             <div className="movie-info">
               <div>
                 <div>
                   <span>Director</span>
-                  <span>{data.Director}</span>
+                  <span>{data.director}</span>
                 </div>
                 <div>
                   <span>Stars</span>
-                  <span>{data.Actors}</span>
+                  <span>{data.actors.map((actor)=>{
+                    return ` ${actor} |`;
+                  })}</span>
                 </div>
                 <div>
                   <span>Genres</span>
-                  <span>{data.Genre}</span>
+                  <span>{data.genre.map((gen)=>{
+                    return ` ${gen.name} |`;
+                  })}</span>
                 </div>
                 <div>
                   <span>Languages</span>
-                  <span>{data.Language}</span>
+                  <span>{data.languages}</span>
                 </div>
                 <div>
-                  <span>Awards</span>
-                  <span>{data.Awards}</span>
+                  <span>Trailer</span>
+                  <span><YoutubeEmbed url={data.trailer}/></span>
                 </div>
               </div>
             </div>
           </div>
           <div className="section-right">
-            <img src={data.Poster} alt={data.Title} />
+            <img src={data.poster} alt={data.title} />
             <button
               onClick={() => {
                 localStorage.setItem('imdbID',imdbID)
