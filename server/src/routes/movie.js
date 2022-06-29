@@ -49,6 +49,29 @@ router.get('/movies?', async (req, res) => {
     
 })
 
+router.get('/movie/:id', async (req, res) => {
+    const id = req.params.id
+    
+    const movie = await Movie.findById(id).populate([
+        {
+            path: "genre",
+            model: Genre
+        },
+        {
+            path: "availableSchedule",
+            model: Schedule
+        }
+    ])
+
+    try {
+        res.status(201).send(movie)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+    
+})
+
 router.get('/upcoming?', async (req, res) => {
     var query = req.query
     var sort = {}
