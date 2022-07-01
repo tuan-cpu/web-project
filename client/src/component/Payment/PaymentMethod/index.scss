@@ -70,23 +70,39 @@
     }
   }
 }
-.checkout{
+.meta {
+  button {
+    cursor: pointer;
+    margin-top: 10px;
+    width: 20%;
+    height: 50px;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 25px;
+    border-color: aqua;
+    &:hover {
+      background-color: rgb(61, 113, 145);
+      transition: 0.7s;
+    }
+  }
+}
+.checkout {
   display: grid;
   grid-template-columns: 48% 48%;
   justify-content: space-between;
-  button{
-  cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
-      height: 50px;
-      font-size: 16px;
-      color: white;
-      background-color: transparent;
-      border-radius: .25rem;
-      border-color: aqua;
-      &:hover {
-          background-color:rgb(61, 113, 145);
-          transition: 0.7s;
-      }
+  button {
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    border-color: aqua;
+    &:hover {
+      background-color: rgb(61, 113, 145);
+      transition: 0.7s;
+    }
   }
 }

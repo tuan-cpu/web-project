@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Web3 from "web3";
+import detectEthereumProvider from "@metamask/detect-provider";
+import { loadContract } from "../../../utils/load-contracts";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();
+  const [web3Api, setWeb3Api] = useState({
+    provider: null,
+    web3: null,
+    contract: null,
+  });
+  const [account, setAccount] = useState(null);
+  const [balance, setBalance] = useState(null);
+
+  useEffect(() => {
+    const loadProvider = async () => {
+      const provider = await detectEthereumProvider();
+      const contract = await loadContract("Cinema", provider);
+      if (provider) {
+        setWeb3Api({
+          web3: new Web3(provider),
+          provider,
+          contract,
+        });
+      } else {
+        console.error("Please Install Metamask");
+      }
+    };
+    loadProvider();
+  }, []);
+  useEffect(() => {
+    const getAccount = async () => {
+      const accounts = await web3Api.web3.eth.getAccounts();
+      setAccount(accounts[0]);
+    };
+    const loadBalance = async () => {
+      const { contract, web3 } = web3Api;
+      const _balance = await web3.eth.getBalance(contract.address);
+      setBalance(web3.utils.fromWei(_balance, "ether"));
+    };
+    web3Api.web3 && getAccount() && loadBalance();
+  }, [web3Api.web3, web3Api]);
+
+  const addFunds = useCallback(async () => {
+    const { contract, web3 } = web3Api;
+    await contract.addFunds({
+      from: account,
+      value: web3.utils.toWei("1", "ether"),
+    });
+    navigate("/ticket");
+  },[web3Api,account,navigate]);
   return (
     <div className="payment-method-section">
       <p className="bold-text">Payment Method</p>
@@ -210,16 +257,25 @@ const PaymentMethod = () => {
             <hr />
           </div>
           <p>
-            Pay via cash.
-            <a href="*">See how it work</a>
+            <strong>Pay via Metamask.</strong>
+            <div className="checkout">
+              <button
+                onClick={() => {
+                  web3Api.provider.request({ method: "eth_requestAccounts" });
+                }}
+              >
+                Connect wallet
+              </button>
+              <button onClick={addFunds}>
+                Transact
+              </button>
+            </div>
           </p>
         </div>
       </div>
       <div className="checkout">
         <button onClick={() => navigate(-1)}>Previous Step</button>
-        <Link to="/ticket">
-          <button>Pay Your Order</button>
-        </Link>
+        <button onClick={() => navigate("/ticket")}>Pay Your Order</button>
       </div>
     </div>
   );

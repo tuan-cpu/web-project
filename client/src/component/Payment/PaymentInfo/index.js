@@ -33,7 +33,7 @@ const PaymentInfo = () => {
             </div>
             <div className="list-group-item">
               <p className="light-text float-left">Movie Title</p>
-              <p className="light-text float-right">{data.Title}</p>
+              <p className="light-text float-right">{data.title}</p>
             </div>
             <div className="list-group-item">
               <p className="light-text float-left">Cinema name</p>
