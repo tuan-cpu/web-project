@@ -26,6 +26,26 @@ router.get('/cinema', async (req, res) => {
     
 })
 
+router.get('/cinema/:id', async (req, res) => {
+    
+    const cinemaId = req.params.id
+
+    const cinema = await Cinema.findById(cinemaId).populate([
+        {
+            path: "layout.seats.seatType",
+            model: SeatType
+        },
+    ])
+
+    try {
+        res.status(201).send(cinema)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+    
+})
+
 
 router.post('/cinema', auth, async (req, res) => {
     if (req.user.role != 'admin') {
