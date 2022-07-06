@@ -9,9 +9,36 @@ const auth = require('../middleware/auth')
 const mongoose = require('mongoose')
 const SeatType = require('../models/seatType')
 
-router.get('/schedule?', async (req, res) => {
+router.get('/schedule', async (req, res) => {
    
     const schedules = await Schedule.find().populate([
+        {
+            path: "movie",
+            model: Movie
+        },
+        {
+            path: "cinema",
+            model: Cinema
+        },
+        {
+            path: "seats.seatType",
+            model: SeatType
+        }
+    ])
+
+
+    try {
+        res.status(201).send(schedules)
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+    
+})
+
+router.get('/schedule/:id', async (req, res) => {
+    const scheduleId = req.params.id
+    const schedules = await Schedule.findById(scheduleId).populate([
         {
             path: "movie",
             model: Movie
