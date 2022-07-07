@@ -5,7 +5,15 @@ export const fetchAsyncSeats = createAsyncThunk(
   "seats/fetchAsyncSeats",
   async(schedule)=>{
     const res = await movieApi.get(`schedule/${schedule}`);
-    return res.data;
+    const returnData = [];
+    let count = 0;
+    res.data.seats.map((seat,index)=>{
+      if(seat.status){ 
+        returnData[count] = seat.seatId;
+        count++;
+      }
+    })
+    return returnData;
   }
 );
 
@@ -39,11 +47,11 @@ const seatSlices = createSlice({
       console.log("Post successfully");
     },
     [fetchAsyncSeats.fulfilled]:(state,{payload})=>{
-      return {...state,seats:payload};
+      return {...state,selectedSeats:payload};
     }
   },
 });
 
 export const { addSeats } = seatSlices.actions;
-export const getAllSeats = (state) => state.seats.seats;
+export const getAllSeats = (state) => state.seats.selectedSeats;
 export default seatSlices.reducer;

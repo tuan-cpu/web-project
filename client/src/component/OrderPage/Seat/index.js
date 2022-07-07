@@ -1,7 +1,15 @@
 import { React, useEffect } from "react";
 import "./index.scss";
+import { fetchAsyncSeats, getAllSeats } from "../../../feature/seats/seatSlices";
+import { useDispatch, useSelector} from "react-redux";
 
 const Seat = (props) => {
+  var schedule = localStorage.getItem('schedule_id');
+  const dispatch = useDispatch();
+  const soldSeat = useSelector(getAllSeats);
+  useEffect(()=>{
+    dispatch(fetchAsyncSeats(schedule));
+  },[dispatch,schedule])
   const { selected, setSelected } = props;
   const seatNum = [];
   useEffect(() => {
@@ -19,7 +27,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatA.push(<div className="px-3"></div>);
     }
-    seatA.push(
+    if(soldSeat.includes(`A${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatA.push(
       <td>
         <input
           type="checkbox"
@@ -45,7 +60,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatB.push(<div className="px-3"></div>);
     }
-    seatB.push(
+    if(soldSeat.includes(`B${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatB.push(
       <td>
         <input
           type="checkbox"
@@ -71,7 +93,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatC.push(<div className="px-3"></div>);
     }
-    seatC.push(
+    if(soldSeat.includes(`C${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatC.push(
       <td>
         <input
           type="checkbox"
@@ -97,7 +126,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatD.push(<div className="px-3"></div>);
     }
-    seatD.push(
+    if(soldSeat.includes(`D${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatD.push(
       <td>
         <input
           type="checkbox"
@@ -123,7 +159,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatE.push(<div className="px-3"></div>);
     }
-    seatE.push(
+    if(soldSeat.includes(`E${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatE.push(
       <td>
         <input
           type="checkbox"
@@ -149,7 +192,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatF.push(<div className="px-3"></div>);
     }
-    seatF.push(
+    if(soldSeat.includes(`F${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatF.push(
       <td>
         <input
           type="checkbox"
@@ -175,7 +225,14 @@ const Seat = (props) => {
     if (i === 8) {
       seatG.push(<div className="px-3"></div>);
     }
-    seatG.push(
+    if(soldSeat.includes(`G${i}`)){
+      seatA.push(
+        <td>
+          <input type='checkbox' disabled={true}/>
+        </td>
+      )
+    }
+    else seatG.push(
       <td>
         <input
           type="checkbox"

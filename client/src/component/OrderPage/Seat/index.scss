@@ -23,7 +23,10 @@ tbody tr td input[type="checkbox"]:checked:before {
 	background-color: #5f2eea;
 	font-size: 15px;
 }
-
+tbody tr td input[type="checkbox"]:disabled:before {
+	background-color: #6e7191;
+	font-size: 15px;
+}
 table{
 	padding-top: 10px;
 }
