@@ -22,6 +22,7 @@ const PaymentInfo = () => {
   var total_payment = localStorage.getItem('total_payment');
   var order_date = localStorage.getItem('order_date');
   var show_date = localStorage.getItem('date');
+  var cinema_name = localStorage.getItem('cinema_name');
   return (
     <div className="payment-info-section">
       <p className="bold-text">Payment Info</p>
@@ -41,8 +42,8 @@ const PaymentInfo = () => {
               <p className="light-text float-right">{data.title}</p>
             </div>
             <div className="list-group-item">
-              <p className="light-text float-left">Cinema name</p>
-              <p className="light-text float-right">A cinema</p>
+              <p className="light-text float-left">Cinema</p>
+              <p className="light-text float-right">{cinema_name}</p>
             </div>
             <div className="list-group-item">
               <p className="light-text float-left">Number of tickets</p>
@@ -50,7 +51,7 @@ const PaymentInfo = () => {
             </div>
             <div className="list-group-item last-item">
               <p className="light-text float-left">Total Payment</p>
-              <p className="bold-text float-right">${total_payment}</p>
+              <p className="bold-text float-right">{total_payment} vnd</p>
             </div>
           </div>
         </div>

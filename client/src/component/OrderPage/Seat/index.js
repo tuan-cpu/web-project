@@ -1,15 +1,12 @@
-import {React, useEffect} from "react";
+import { React, useEffect } from "react";
 import "./index.scss";
-import { getAllSeats } from "../../../feature/seats/seatSlices";
-import { useSelector } from "react-redux";
 
 const Seat = (props) => {
-  const allSeats = useSelector(getAllSeats);
-  const {selected,setSelected} = props;
+  const { selected, setSelected } = props;
   const seatNum = [];
   useEffect(() => {
-    localStorage.setItem('seats',selected);
-    localStorage.setItem('seat_count',selected.length);
+    localStorage.setItem("seats", selected);
+    localStorage.setItem("seat_count", selected.length);
   }, [selected]);
   for (let i = 1; i < 15; i++) {
     if (i === 8) {
@@ -17,7 +14,6 @@ const Seat = (props) => {
     }
     seatNum.push(<td className="pl-3">{i}</td>);
   }
-
   const seatA = [];
   for (let i = 1; i < 15; i++) {
     if (i === 8) {
@@ -29,13 +25,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`A${i}`}
           name={`A${i}`}
-          onChange={()=>{
-            if(!selected.includes(`A${i}`))setSelected([...selected,`A${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`A${i}`))
+              setSelected([...selected, `A${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `A${i}`;
-
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -55,12 +51,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`B${i}`}
           name={`B${i}`}
-          onChange={()=>{
-            if(!selected.includes(`B${i}`))setSelected([...selected,`B${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`B${i}`))
+              setSelected([...selected, `B${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `B${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -80,12 +77,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`C${i}`}
           name={`C${i}`}
-          onChange={()=>{
-            if(!selected.includes(`C${i}`))setSelected([...selected,`C${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`C${i}`))
+              setSelected([...selected, `C${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `C${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -105,12 +103,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`D${i}`}
           name={`D${i}`}
-          onChange={()=>{
-            if(!selected.includes(`D${i}`))setSelected([...selected,`D${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`D${i}`))
+              setSelected([...selected, `D${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `D${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -130,12 +129,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`E${i}`}
           name={`E${i}`}
-          onChange={()=>{
-            if(!selected.includes(`E${i}`))setSelected([...selected,`E${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`E${i}`))
+              setSelected([...selected, `E${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `E${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -155,12 +155,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`F${i}`}
           name={`F${i}`}
-          onChange={()=>{
-            if(!selected.includes(`F${i}`))setSelected([...selected,`F${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`F${i}`))
+              setSelected([...selected, `F${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `F${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}
@@ -180,12 +181,13 @@ const Seat = (props) => {
           type="checkbox"
           value={`G${i}`}
           name={`G${i}`}
-          onChange={()=>{
-            if(!selected.includes(`G${i}`))setSelected([...selected,`G${i}`]);
-            else{
-              var temp_array = selected.filter((value)=>{
+          onChange={() => {
+            if (!selected.includes(`G${i}`))
+              setSelected([...selected, `G${i}`]);
+            else {
+              var temp_array = selected.filter((value) => {
                 return value !== `G${i}`;
-              })
+              });
               setSelected(temp_array);
             }
           }}

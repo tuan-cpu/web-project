@@ -2,7 +2,7 @@ import React from "react";
 import "./index.scss";
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
-import nameMap from "../../common/cinemaName/cinemaName";
+import nameMap from "../../common/cinema/cinemaName";
 const CinemaScheduleListing = (props) => {
   const { data } = props;
   const navigate = useNavigate();

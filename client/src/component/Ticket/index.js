@@ -64,7 +64,7 @@ const Ticket = () => {
                         </div>
                         <div className="col-4">
                           <p className="info">Total Payment</p>
-                          <p className="info-value-price">${total_payment}</p>
+                          <p className="info-value-price">{total_payment} vnd</p>
                         </div>
                       </div>
                     </div>
