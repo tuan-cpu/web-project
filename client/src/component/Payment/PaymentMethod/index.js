@@ -4,8 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "../../../utils/load-contracts";
+import { postAsyncBookedSeats } from "../../../feature/seats/seatSlices";
+import { useDispatch } from "react-redux";
 
 const PaymentMethod = () => {
+  var seats = localStorage.getItem('seats');
+  var schedule = localStorage.getItem('schedule_id');
+  var payment_method = '62ac2196c719c9ecd0f1cd75';
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [web3Api, setWeb3Api] = useState({
     provider: null,
@@ -275,7 +281,10 @@ const PaymentMethod = () => {
       </div>
       <div className="checkout">
         <button onClick={() => navigate(-1)}>Previous Step</button>
-        <button onClick={() => navigate("/ticket")}>Pay Your Order</button>
+        <button onClick={() => {
+          dispatch(postAsyncBookedSeats(schedule,seats,payment_method))
+          navigate("/ticket");
+          }}>Pay Your Order</button>
       </div>
     </div>
   );

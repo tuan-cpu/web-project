@@ -77,9 +77,10 @@ const MovieListing = () => {
         <h3>{movies.Error}</h3>
       </div>
     );
+
   renderUpcomingMovies =
-    upcomingMovies.Response === "True" ? (
-      upcomingMovies.Search.map((movie, index) => (
+    upcomingMovies.length > 0 ? (
+      upcomingMovies.map((movie, index) => (
         <MovieCard key={index} data={movie} />
       ))
     ) : (

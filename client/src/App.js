@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from "./component/Header";
-import Footer from "./component/Footer";
 import Home from "./component/Home";
 import MovieDetail from "./component/MovieDetail";
 import PageNotFound from "./component/PageNotFound";
@@ -38,7 +37,6 @@ function App() {
         <Routes>
           
         </Routes>
-        <Footer></Footer>
       </Router>
     </div>
   );

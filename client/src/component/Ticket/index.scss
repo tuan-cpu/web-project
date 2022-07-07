@@ -1,3 +1,17 @@
+.info {
+  font-size: 14px;
+  color: #aaaaaa;
+}
+.info-value {
+  font-weight: 600;
+  font-size: 18px;
+  color: #14142b;
+}
+.info-value-price {
+  font-weight: 700;
+  font-size: 26px;
+  color: black;
+}
 .ticket-container {
   width: 95%;
   padding-right: 15px;
@@ -72,20 +86,6 @@
             padding: 1.25rem;
             padding-bottom: 0 !important;
             background-color: white;
-            .info {
-              font-size: 14px;
-              color: #aaaaaa;
-            }
-            .info-value {
-              font-weight: 600;
-              font-size: 18px;
-              color: #14142b;
-            }
-            .info-value-price {
-              font-weight: 700;
-              font-size: 26px;
-              color: black;
-            }
             .row-inner {
               padding: 0.75rem 1.25rem;
               display: flex !important;

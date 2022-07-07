@@ -1,7 +1,10 @@
 import {React, useEffect} from "react";
 import "./index.scss";
+import { getAllSeats } from "../../../feature/seats/seatSlices";
+import { useSelector } from "react-redux";
 
 const Seat = (props) => {
+  const allSeats = useSelector(getAllSeats);
   const {selected,setSelected} = props;
   const seatNum = [];
   useEffect(() => {
@@ -31,6 +34,7 @@ const Seat = (props) => {
             else{
               var temp_array = selected.filter((value)=>{
                 return value !== `A${i}`;
+
               })
               setSelected(temp_array);
             }

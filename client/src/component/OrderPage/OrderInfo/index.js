@@ -5,6 +5,7 @@ import "./index.scss";
 const OrderInfo = ({ movie,selected }) => {
   var ticket_price = 100;
   var seat_count = selected.length;
+  const show_date = localStorage.getItem('date');
   useEffect(() => {
     var date = new Date();
     localStorage.setItem('total_payment',seat_count*ticket_price)
@@ -21,7 +22,7 @@ const OrderInfo = ({ movie,selected }) => {
           </div>
           <div className="text-section">
             <p>Date</p>
-            <Moment format="DD MMMM YYYY">1976-04-19T12:59-0500</Moment>
+            <Moment format="DD MMMM YYYY">{show_date}</Moment>
           </div>
           <div className="text-section">
             <p>One ticket Price</p>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./index.scss";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams  } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAsyncMovieOrShowDetail,
@@ -9,9 +9,9 @@ import {
 } from "../../feature/movies/movieSlice";
 import Moment from "react-moment";
 import YoutubeEmbed from "./YoutubeEmbed";
+import CinemaScheduleListing from "../CinemaScheduleListing";
 
 const MovieDetail = () => {
-  const navigate = useNavigate();
   const { imdbID } = useParams();
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
@@ -31,17 +31,17 @@ const MovieDetail = () => {
             <div className="movie-title">{data.Title}</div>
             <div className="movie-rating">
               <span>
-                IMDB Rating <i class="fa-solid fa-star"></i> :{data.imdbRating}
+                IMDB Rating <i className="fa-solid fa-star"></i> :{data.imdbRating}
               </span>
               <span>
-                IMDB Votes <i class="fa-solid fa-thumbs-up"></i> :
+                IMDB Votes <i className="fa-solid fa-thumbs-up"></i> :
                 {data.imdbVotes}
               </span>
               <span>
-                Runtime <i class="fa-solid fa-film"></i> :{data.runtime}
+                Runtime <i className="fa-solid fa-film"></i> :{data.runtime}
               </span>
               <span>
-                Year <i class="fa-solid fa-calendar"></i> : <Moment format="MMMM DD YYYY">{data.released}</Moment>
+                Year <i className="fa-solid fa-calendar"></i> : <Moment format="MMMM DD YYYY">{data.released}</Moment>
               </span>
             </div>
             <div className="movie-plot">{data.description}</div>
@@ -71,19 +71,15 @@ const MovieDetail = () => {
                   <span>Trailer</span>
                   <span><YoutubeEmbed url={data.trailer}/></span>
                 </div>
+                <div>
+                  <span></span>
+                  <span onClick={()=>localStorage.setItem('imdbID',imdbID)}><CinemaScheduleListing data={data}/></span>
+                </div>
               </div>
             </div>
           </div>
           <div className="section-right">
             <img src={data.poster} alt={data.title} />
-            <button
-              onClick={() => {
-                localStorage.setItem('imdbID',imdbID)
-                navigate("/order");
-              }}
-            >
-              Book a Seat
-            </button>
           </div>
         </>
       )}

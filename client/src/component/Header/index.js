@@ -36,7 +36,7 @@ const Header = () => {
             placeholder="Search for Movie"
           />
           <button type="submit">
-            <i class="fa fa-search" />
+            <i className="fa fa-search" />
           </button>
         </form>
       </div>

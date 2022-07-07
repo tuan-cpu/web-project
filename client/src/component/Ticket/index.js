@@ -7,11 +7,14 @@ import {
   getSelectedMovieOrShow,
   removeSelectedMovieOrShow,
 } from "../../feature/movies/movieSlice";
+import Moment from 'react-moment';
 
 const Ticket = () => {
   var seat = localStorage.getItem('seats');
   var seat_count = localStorage.getItem('seat_count');
   var total_payment = localStorage.getItem('total_payment');
+  var show_date = localStorage.getItem('date');
+  var cinema_name = localStorage.getItem('cinema_name');
   const imdbID = localStorage.getItem('imdbID');
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
@@ -32,20 +35,20 @@ const Ticket = () => {
                 <div className="col">
                   <div className="left-ticket">
                     <div className="header-info">
-                      <p className="bold-text">Group 6 Cinema</p>
+                      <p className="bold-text">{cinema_name}</p>
                       <p className="left-label">Admit one</p>
                     </div>
                     <div className="card-body">
                       <p className="info">Movie</p>
-                      <p className="info-value">{data.Title}</p>
+                      <p className="info-value">{data.title}</p>
                       <div className="row-inner">
                         <div className="col-4">
                           <p className="info">Date</p>
-                          <p className="info-value">A Date</p>
+                          <Moment format="DD MMMM YYYY" className="info-value">{show_date}</Moment>
                         </div>
                         <div className="col-4">
                           <p className="info">Time</p>
-                          <p className="info-value">A Time</p>
+                          <Moment format="hh:mm" className="info-value">{show_date}</Moment>
                         </div>
                         <div className="col-4">
                           <p className="info">Category</p>
@@ -70,22 +73,22 @@ const Ticket = () => {
                 <div className="col">
                   <div className="right-ticket">
                     <div className="header-info">
-                      <p className="bold-text">Group 6 Cinema</p>
+                      <p className="bold-text">{cinema_name}</p>
                     </div>
                     <div className="card-body">
                       <div className="row-inner">
                         <div className="col-10">
                           <div className="col-6">
                             <p className="info">Movie</p>
-                            <p className="info-value">{data.Title}</p>
+                            <p className="info-value">{data.title}</p>
                           </div>
                           <div className="col-6">
                             <p className="info">Date</p>
-                            <p className="info-value">A Date</p>
+                            <Moment format="DD MMMM YYYY" className="info-value">{show_date}</Moment>
                           </div>
                           <div className="col-6">
                             <p className="info">Time</p>
-                            <p className="info-value">A Time</p>
+                            <Moment format="hh:mm" className="info-value">{show_date}</Moment>
                           </div>
                           <div className="col-6">
                             <p className="info">Category</p>

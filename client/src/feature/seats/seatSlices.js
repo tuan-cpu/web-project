@@ -1,14 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit/";
+import movieApi from "../../common/api/movieApi";
 
-export const fetchAsyncSelectedSeats = createAsyncThunk();
+export const fetchAsyncSeats = createAsyncThunk(
+  "seats/fetchAsyncSeats",
+  async(schedule)=>{
+    const res = await movieApi.get(`schedule/${schedule}`);
+    return res.data;
+  }
+);
 
-export const fetchAsyncLoveSeats = createAsyncThunk();
+export const postAsyncBookedSeats = createAsyncThunk(
+  "seats/postAsyncBookedSeats",
+  async(schedule,array,paymentMethod)=>{
+    const res = await movieApi.post('book',{
+      schedule: schedule,
+      seats: array,
+      paymentMethod: paymentMethod
+    });
+    console.log(res);
+  }
+)
 
 const initialState = {
   seats: [],
   selectedSeats: [],
-  soldSeats: [],
-  loveSeats: [],
 };
 
 const seatSlices = createSlice({
@@ -20,16 +35,15 @@ const seatSlices = createSlice({
     },
   },
   extraReducers: {
-    [fetchAsyncSelectedSeats.fulfilled]: (state, { payload }) => {
-      return { ...state, selectedSeats: payload };
+    [postAsyncBookedSeats.fulfilled]:()=>{
+      console.log("Post successfully");
     },
-    [fetchAsyncLoveSeats.fulfilled]: (state, { payload }) => {
-      return { ...state, loveSeats: payload };
-    },
+    [fetchAsyncSeats.fulfilled]:(state,{payload})=>{
+      return {...state,seats:payload};
+    }
   },
 });
 
 export const { addSeats } = seatSlices.actions;
-export const getAllSelectedSeats = (state) => state.seats.selectedSeats;
-export const getAllLoveSeats = (state) => state.seats.loveSeats;
+export const getAllSeats = (state) => state.seats.seats;
 export default seatSlices.reducer;
