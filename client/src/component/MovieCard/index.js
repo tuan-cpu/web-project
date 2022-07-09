@@ -1,7 +1,7 @@
 import React from "react";
 import'./index.scss';
 import { Link } from "react-router-dom";
-import Moment from "react-moment";;
+import Moment from "react-moment";
 
 const MovieCard = (props) =>{
     const {data} = props;
