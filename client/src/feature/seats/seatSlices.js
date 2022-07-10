@@ -3,35 +3,45 @@ import movieApi from "../../common/api/movieApi";
 
 export const fetchAsyncSeats = createAsyncThunk(
   "seats/fetchAsyncSeats",
-  async(schedule)=>{
+  async (schedule) => {
     const res = await movieApi.get(`schedule/${schedule}`);
     const returnData = [];
     let count = 0;
-    res.data.seats.map((seat,index)=>{
-      if(seat.status){ 
+    res.data.seats.map((seat) => {
+      if (seat.status) {
         returnData[count] = seat.seatId;
         count++;
       }
-    })
+    });
     return returnData;
   }
 );
 
 export const postAsyncBookedSeats = createAsyncThunk(
   "seats/postAsyncBookedSeats",
-  async(schedule,array,paymentMethod)=>{
-    const res = await movieApi.post('book',{
-      schedule: schedule,
-      seats: array,
-      paymentMethod: paymentMethod
-    });
-    console.log(res);
+  async (data) => {
+    const res = await movieApi.post(
+      "book",
+      {
+        schedule: data.schedule,
+        seats: data.array,
+        paymentMethod: data.paymentMethod,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${data.token}`,
+        },
+      }
+    );
+    return res.data;
   }
-)
+);
 
 const initialState = {
   seats: [],
   selectedSeats: [],
+  schedule: {},
+  bookingStatus: false,
 };
 
 const seatSlices = createSlice({
@@ -41,17 +51,25 @@ const seatSlices = createSlice({
     addSeats: (state, { payload }) => {
       state.seats = payload;
     },
+    removeSchedule: (state)=>{
+      state.schedule = {};
+    }
   },
   extraReducers: {
-    [postAsyncBookedSeats.fulfilled]:()=>{
-      console.log("Post successfully");
+    [postAsyncBookedSeats.pending]: (state) => {
+      return { ...state, bookingStatus:false };
     },
-    [fetchAsyncSeats.fulfilled]:(state,{payload})=>{
-      return {...state,selectedSeats:payload};
-    }
+    [postAsyncBookedSeats.fulfilled]: (state, { payload }) => {
+      return { ...state, schedule: payload, bookingStatus:true };
+    },
+    [fetchAsyncSeats.fulfilled]: (state, { payload }) => {
+      return { ...state, selectedSeats: payload };
+    },
   },
 });
 
-export const { addSeats } = seatSlices.actions;
+export const { addSeats, removeSchedule } = seatSlices.actions;
 export const getAllSeats = (state) => state.seats.selectedSeats;
+export const getSchedule = (state) => state.seats.schedule;
+export const getStatus = (state) => state.seats.bookingStatus;
 export default seatSlices.reducer;
