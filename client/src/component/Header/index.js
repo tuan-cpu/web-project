@@ -9,7 +9,7 @@ import {
 import "./index.scss";
 
 const Header = () => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   const [term, setTerm] = useState("");
   const dispatch = useDispatch();
   const submit_handler = (e) => {
@@ -19,7 +19,7 @@ const Header = () => {
       dispatch(fetchAsyncMovies(term));
       dispatch(fetchAsyncUpcomingMovies(term));
       setTerm("");
-      navigate(`/${term}`);
+      navigate(`/search/${term}`);
     }
   };
   return (
@@ -42,7 +42,7 @@ const Header = () => {
       </div>
       <div className="user-image">
         <Link to="/signin">
-        <img src={user} alt="user" />
+          <img src={user} alt="user" />
         </Link>
       </div>
     </div>

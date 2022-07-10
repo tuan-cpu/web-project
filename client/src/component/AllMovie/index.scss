@@ -1,20 +1,21 @@
 @import "../../common/colors.scss";
 
-.movie-list-all, .show-list-all{
-    margin: 20px 0px;
-    h2{
-        color: $font-secondary;
-        margin-bottom: 10px;
-        font-weight: 400;
-    }
+.movie-list-all,
+.show-list-all {
+  margin: 20px 0px;
+  h2 {
+    color: $font-secondary;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
 }
-.movie-list-label-all{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.movie-list-label-all {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.movie-container-all{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-    grid-column-gap: 15px;
+.movie-container-all {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-column-gap: 15px;
 }

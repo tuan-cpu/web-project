@@ -23,7 +23,7 @@ function App() {
         <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/all/:category' element={<AllMovie/>}/>
-        <Route path='/:keyword' exact element={<Home/>}/>
+        <Route path='/search/:keyword' exact element={<Home/>}/>
         <Route path='/movie/:imdbID' element={<MovieDetail/>}/>
         <Route path='/order' element={<OrderPage/>}/>
         <Route path='*' element={<PageNotFound/>}/>
