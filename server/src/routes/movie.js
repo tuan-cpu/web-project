@@ -52,7 +52,7 @@ router.get('/movies?', async (req, res) => {
 router.get('/movie/:id', async (req, res) => {
     const id = req.params.id
     
-    const movie = await Movie.findById(id).populate([
+    let movieData = await Movie.findById(id).populate([
         {
             path: "genre",
             model: Genre
@@ -62,7 +62,16 @@ router.get('/movie/:id', async (req, res) => {
             model: Schedule
         }
     ])
-
+    let i = 0;
+    let movie = JSON.parse(JSON.stringify(movieData));
+    for await (let schedule of movie.availableSchedule) {
+        const cinemaName = await Cinema.findById(schedule.cinema)
+        // console.log(cinemaName.name);
+        movie.availableSchedule[i].cinemaName = cinemaName.name
+        console.log(movie.availableSchedule[i]["cinemaName"]);
+        i++
+    }
+    console.log(movie.availableSchedule[1]);
     try {
         res.status(201).send(movie)
 
