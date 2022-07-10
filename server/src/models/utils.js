@@ -26,12 +26,12 @@ const layoutObject = {
 const locationObject = {
     ward: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Ward'
     },
     address: {
         type: String,
-        required: true
+        required: false
     }
 }
 
