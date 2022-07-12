@@ -26,7 +26,8 @@ export const postAsyncRegister = createAsyncThunk(
       email: data.email,
       name: data.name,
       password: data.password,
-      username: data.username
+      username: data.username,
+      phoneNumber: data.phoneNumber
     });
     return res.data;
   }
@@ -59,6 +60,11 @@ export const fetchAsyncAuth = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    setLoginState: (state) => {
+      state.isLogin = false;
+    },
+  },
   extraReducers: {
     [postAsyncLogin.pending]: (state) => {
       return { ...state, isLogging: true, isLogin: false };
@@ -81,7 +87,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { setLoginState } = authSlice.actions;
 export const getLoginCurrentState = (state) => state.auth.isLogging;
 export const getLoginState = (state) => state.auth.isLogin;
 export const getRegisterState = (state) => state.auth.isRegistered;

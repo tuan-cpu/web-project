@@ -3,6 +3,7 @@ import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postAsyncLogin,getUser,getLoginState } from "../../feature/auths/authSlice";
+import movieApi from "../../common/api/movieApi";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,25 @@ const SignIn = () => {
   useEffect(() => {
     if(isLogin){
       localStorage.setItem("user_token",user.token);
+    }
+  }, [isLogin]);
+  const [logged, setLogged] = useState(401);
+  useEffect(() => {
+    const auth = async () => {
+      const res = await movieApi.get("user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+      });
+      setLogged(res.status);
+    };
+    auth();
+  }, [localStorage.getItem("user_token")]);
+  useEffect(()=>{
+    if(logged === 201){
       navigate(-1);
     }
-  }, [user,isLogin]);
+  },[logged])
   return (
     <div className="sign-in-section">
       <div className="login-body">

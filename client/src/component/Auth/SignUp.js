@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { postAsyncRegister, getRegisterState } from "../../feature/auths/authSlice";
+import { useDispatch } from "react-redux";
+import { postAsyncRegister } from "../../feature/auths/authSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isRegistered = useSelector(getRegisterState);
   const [name,setName] = useState("");
   const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const [phone,setPhone] = useState("");
   const [data,setData] = useState({});
   useEffect(() => {
     setData({
       email: email,
       name: name,
       username: username,
-      password: password
+      password: password,
+      phoneNumber: phone
     })
   }, [email,name,username,password]);
-  useEffect(()=>{
-    if(isRegistered){
-      navigate(-1);
-    }
-  },[isRegistered])
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -68,11 +64,22 @@ const SignUp = () => {
                 onInput={(e) => setPassword(e.target.value)}
               />
             </div>
+            <div className="form-group">
+              <label className="form-label">Phone number</label>
+              <input
+                placeholder="phone number"
+                type={"email"}
+                className="form-control"
+                onInput={(e) => setPhone(e.target.value)}
+              />
+            </div>
           </form>
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
               dispatch(postAsyncRegister(data));
+              alert("Sign up successful");
+              navigate('/signin');
             }}>Sign Up</button>
           </div>
         </div>
