@@ -1,12 +1,12 @@
-const Province = require('./models/province')
-const District = require('./models/district')
-const Ward = require('./models/ward')
+const Province = require('../models/province')
+const District = require('../models/district')
+const Ward = require('../models/ward')
 
 'use strict';
 
 const fs = require('fs');
 
-let rawdata = fs.readFileSync('./dvhcvn.json');
+let rawdata = fs.readFileSync(__dirname + '/dvhcvn.json');
 let locationData = JSON.parse(rawdata).data;
 
 async function saveProvince() {
