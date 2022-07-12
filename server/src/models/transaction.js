@@ -11,6 +11,10 @@ const transactionSchema = mongoose.Schema({
         required: true,
         ref: 'Schedule'
     },
+    bookSeats: [{
+        type: String,
+        required: true,
+    }],
     countTicket: {
         type: Number,
         required: true,

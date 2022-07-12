@@ -55,10 +55,6 @@ const userSchema = new mongoose.Schema({
             required: false
         }
     }],
-    watchedMovies: [{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Movie'
-    }],
     address: locationObject,
     avatar: {
         type: String

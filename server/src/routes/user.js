@@ -45,10 +45,6 @@ router.get('/user', auth, async (req, res) => {
             ]
         },
         {
-            path: "watchedMovies", 
-            model: Movie
-        },
-        {
             path: "transactionHistory", 
             model: Transaction
         },
