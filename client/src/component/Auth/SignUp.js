@@ -20,7 +20,6 @@ const SignUp = () => {
       username: username,
       password: password
     })
-    console.log(data);
   }, [email,name,username,password]);
   return (
     <div className="sign-in-section">

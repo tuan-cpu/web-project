@@ -10,7 +10,6 @@ const OrderHistory = (props) => {
   renderTicket =
     user ? (
       user.transactionHistory?.map((ticket, index) => {
-        console.log(moment(date._d).isAfter(moment(ticket.schedule.timeStart)));
         return(
           <div className="eachOrder" key={index}>
             <div>
@@ -19,10 +18,13 @@ const OrderHistory = (props) => {
                   <Moment format="MMMM DD YYYY">
                     {ticket.schedule.timeStart}
                   </Moment>
-                  <br/>
+                  {' '}
                   <Moment format="hh:mm">
                     {ticket.schedule.timeStart}
                   </Moment>
+                  <p>
+                    {ticket.bookSeats}
+                  </p>
                   <p className="filmTitle blackText">
                     {ticket.schedule.movie.title}
                   </p>

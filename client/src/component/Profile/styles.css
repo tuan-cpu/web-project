@@ -175,9 +175,11 @@
     font-weight: 600;
 
   }
-  .right-part-order img{
+  .right-part-order p{
     width: 50%;
     float: right;
+    font-size: 20px;
+    font-weight: 600;
   }
 
   .eachOrder hr{

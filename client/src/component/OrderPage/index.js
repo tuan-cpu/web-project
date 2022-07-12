@@ -38,8 +38,7 @@ const OrderPage = () => {
           </Link>
           <button disabled={selected.length === 0}
           onClick={()=>{
-            var token = localStorage.getItem("user_token");
-            console.log(token);
+            let token = localStorage.getItem("user_token");
             if(token === null || token === undefined){
               alert("Please log in first!");
               navigate('/signin');
