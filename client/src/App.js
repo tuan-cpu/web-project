@@ -13,6 +13,8 @@ import SignIn from './component/Auth/SignIn';
 import SignUp from './component/Auth/SignUp';
 import Recover from './component/Auth/Recover';
 
+import ProfilePage from './component/Profile/ProfilePage';
+
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/recover' element={<Recover/>}/>
+        
+        <Route path='/profile' element={<ProfilePage/>}/>
         </Routes>
         </div>
         <Routes>
