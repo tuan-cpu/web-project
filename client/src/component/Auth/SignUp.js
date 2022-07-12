@@ -7,7 +7,7 @@ import { postAsyncRegister, getRegisterState } from "../../feature/auths/authSli
 const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isRegistering = useSelector(getRegisterState);
+  const isRegistered = useSelector(getRegisterState);
   const [name,setName] = useState("");
   const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
@@ -21,6 +21,11 @@ const SignUp = () => {
       password: password
     })
   }, [email,name,username,password]);
+  useEffect(()=>{
+    if(isRegistered){
+      navigate(-1);
+    }
+  },[isRegistered])
   return (
     <div className="sign-in-section">
       <div className="login-body">

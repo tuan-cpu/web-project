@@ -92,7 +92,7 @@ const MovieListing = () => {
     <div className="movie-wrapper">
       <div className="movie-list">
         <div className="movie-list-label">
-          <h2>Movies</h2>
+          <h2>Now playing</h2>
           <Link to="/all/movies">See All</Link>
         </div>
         {loader ? (

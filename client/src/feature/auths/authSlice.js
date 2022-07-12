@@ -5,7 +5,7 @@ const initialState = {
   user: {},
   isLogin: false,
   isLogging: false,
-  isRegistering: false,
+  isRegistered: false,
   isLogged: false,
 };
 
@@ -67,10 +67,10 @@ const authSlice = createSlice({
       return { ...state, user: payload, isLogging: false, isLogin: true };
     },
     [postAsyncRegister.pending]: (state) => {
-      return { ...state, isRegistering: true };
+      return { ...state, isRegistered: false };
     },
     [postAsyncRegister.fulfilled]: (state) => {
-      return { ...state, isRegistering: false };
+      return { ...state, isRegistered: true };
     },
     [fetchAsyncAuth.fulfilled]: (state, { payload }) => {
       return { ...state, isLogged: payload };
@@ -84,7 +84,7 @@ const authSlice = createSlice({
 export const { logout } = authSlice.actions;
 export const getLoginCurrentState = (state) => state.auth.isLogging;
 export const getLoginState = (state) => state.auth.isLogin;
-export const getRegisterState = (state) => state.auth.isRegistering;
+export const getRegisterState = (state) => state.auth.isRegistered;
 export const getLoggedState = (state) => state.auth.isLogged;
 export const getUser = (state) => state.auth.user;
 const authReducer = authSlice.reducer;

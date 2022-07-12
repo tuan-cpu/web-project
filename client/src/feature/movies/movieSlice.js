@@ -5,10 +5,10 @@ export const fetchAsyncMovies = createAsyncThunk(
   "movies/fetchAsyncMovies",
   async (term) => {
     if(term !== ""){
-      const response = await movieApi.get(`movies?title=${term}`);
+      const response = await movieApi.get(`nowplaying?title=${term}`);
       return response.data;
     }else{
-      const response = await movieApi.get("movies");
+      const response = await movieApi.get("nowplaying");
       return response.data;
     }
   }
