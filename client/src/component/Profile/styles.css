@@ -68,7 +68,7 @@
   }
 
 
-  .row .left{
+  .row-profile .left{
     /* margin-top: 60px; */
     margin: 60px 0 0 60px;
     width: 30%;
@@ -78,7 +78,7 @@
     border-radius: 10px 10px 10px 10px;
     color:black;
   }
-  .row .right{
+  .row-profile .right{
     margin: 60px 30px;
     width: 55%;
     float: right;
@@ -93,9 +93,9 @@
 
   
 
-  .row{
-    /* height: 3vh;
-    margin: 10px 20px 10px 20px; */
+  .row-profile{
+    height: 3vh;
+    margin: 10px 20px 10px 20px;
   }
 
   .inforText{

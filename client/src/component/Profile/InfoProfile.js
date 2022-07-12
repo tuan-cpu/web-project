@@ -9,17 +9,12 @@ const InfoProfile = (props) => {
       {/* <Col xs={12} md={4}> */}
       <Card>
         <Card.Body>
-          <div className="row">
+          <div className="row-profile">
             <div className="text-color-body inforText greyBoldText">INFO</div>
             <div id="threedot">...</div>
           </div>
           <div className="text-center">
             <Image
-              // src={
-              //   data.picture === null
-              //     ? "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg"
-              //     : data.picture
-              // }
               src={
                 "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg"
               }
