@@ -12,10 +12,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const PaymentMethod = () => {
-  var seats = localStorage.getItem("seats");
-  var schedule = localStorage.getItem("schedule_id");
-  var payment_method = "62ac2196c719c9ecd0f1cd75";
-  var user_token = localStorage.getItem("user_token");
+  let seats = localStorage.getItem("seats");
+  let schedule = localStorage.getItem("schedule_id");
+  let payment_method = "62ac2196c719c9ecd0f1cd75";
+  let user_token = localStorage.getItem("user_token");
   const data = {
     schedule: schedule,
     array: seats,
@@ -69,7 +69,8 @@ const PaymentMethod = () => {
       from: account,
       value: web3.utils.toWei("1", "ether"),
     });
-    navigate("/ticket");
+    dispatch(postAsyncBookedSeats(data));
+    // navigate("/ticket");
   }, [web3Api, account, navigate]);
   useEffect(()=>{
     if(status){
