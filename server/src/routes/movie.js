@@ -15,6 +15,10 @@ router.get('/movies?', async (req, res) => {
     if (!query.limit) {
         query.limit = 10
     }
+    if (query.title) {
+        query.title = { "$regex": query.title }
+        
+    }
     if (query.genre) {
         const genresQuery = query.genre.split(',') 
         var genresObjId = await Genre.find({
@@ -87,6 +91,10 @@ router.get('/upcoming?', async (req, res) => {
     if (!query.limit) {
         query.limit = 10
     }
+    if (query.title) {
+        query.title = { "$regex": query.title }
+    }
+
     if (query.genre) {
         const genresQuery = query.genre.split(',') 
         var genresObjId = await Genre.find({
@@ -127,6 +135,11 @@ router.get('/nowplaying?', async (req, res) => {
     if (!query.limit) {
         query.limit = 10
     }
+    if (query.title) {
+        query.title = { "$regex": query.title }
+        
+    }
+
     if (query.genre) {
         const genresQuery = query.genre.split(',') 
         var genresObjId = await Genre.find({
