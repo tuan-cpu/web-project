@@ -37,7 +37,7 @@ router.post('/book', auth, async (req, res) => {
         paymentMethod: paymentMethodId
     })
     user.watchedMovies.push(schedule.movie)
-
+    user.rewardPoint += 100;
     try {
         await schedule.save()
         await user.save()
