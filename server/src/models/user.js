@@ -63,6 +63,10 @@ const userSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
+    rewardPoint: {
+        type: Number,
+        default: 0
+    },
     role: {
         type: String,
         default: 'member'
