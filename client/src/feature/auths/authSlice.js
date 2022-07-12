@@ -21,11 +21,12 @@ export const postAsyncLogin = createAsyncThunk(
 );
 export const postAsyncRegister = createAsyncThunk(
   "auth/postAsyncRegister",
-  async ({ email, name, password }) => {
+  async (data) => {
     const res = await movieApi.post("users/register", {
-      email: email,
-      name: name,
-      password: password,
+      email: data.email,
+      name: data.name,
+      password: data.password,
+      username: data.username
     });
     return res.data;
   }

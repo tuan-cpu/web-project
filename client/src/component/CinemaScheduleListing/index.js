@@ -16,8 +16,8 @@ const CinemaScheduleListing = (props) => {
             className="single-schedule"
             onClick={() => {
               localStorage.setItem("schedule_id", schedule._id);
-              localStorage.setItem("date",schedule.timeStart);
-              localStorage.setItem("cinema_name",schedule.cinemaName)
+              localStorage.setItem("date", schedule.timeStart);
+              localStorage.setItem("cinema_name", schedule.cinemaName);
               navigate("/order");
             }}
           >

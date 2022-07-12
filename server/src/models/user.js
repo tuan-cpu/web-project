@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
             if (value.toLowerCase().includes('password')) {
                 throw new Error('Password cannot contain "password"')
             }
-            criteria = /^(?=.*\d)(?=.*[a-z])/
+            let criteria = /^(?=.*\d)(?=.*[a-z])/
             if (!value.match(criteria)) {
                 throw new Error('Password must contain both character and digit.')
             }
@@ -55,13 +55,13 @@ const userSchema = new mongoose.Schema({
             required: false
         }
     }],
-    watchedMovies: [{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Movie'
-    }],
     address: locationObject,
     avatar: {
         type: String
+    },
+    rewardPoint: {
+        type: Number,
+        default: 0
     },
     role: {
         type: String,
