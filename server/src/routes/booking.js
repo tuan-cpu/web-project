@@ -23,6 +23,7 @@ router.post('/book', auth, async (req, res) => {
     const user = await User.findById(userId)
 
     var amount = 0
+   
     for (let seat of schedule.seats) {
         if (seats.includes(seat.seatId)) {
             seat.status = true
@@ -32,6 +33,7 @@ router.post('/book', auth, async (req, res) => {
     const transaction = Transaction({
         user: userId,
         schedule: scheduleId,
+        bookSeats: seats,
         countTicket: seats.length,
         amount: amount,
         paymentMethod: paymentMethodId
