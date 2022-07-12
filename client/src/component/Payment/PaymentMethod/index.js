@@ -4,14 +4,27 @@ import { useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { loadContract } from "../../../utils/load-contracts";
-import { postAsyncBookedSeats } from "../../../feature/seats/seatSlices";
-import { useDispatch } from "react-redux";
+import {
+  getSchedule,
+  postAsyncBookedSeats,
+  getStatus
+} from "../../../feature/seats/seatSlices";
+import { useDispatch, useSelector } from "react-redux";
 
 const PaymentMethod = () => {
-  var seats = localStorage.getItem('seats');
-  var schedule = localStorage.getItem('schedule_id');
-  var payment_method = '62ac2196c719c9ecd0f1cd75';
+  var seats = localStorage.getItem("seats");
+  var schedule = localStorage.getItem("schedule_id");
+  var payment_method = "62ac2196c719c9ecd0f1cd75";
+  var user_token = localStorage.getItem("user_token");
+  const data = {
+    schedule: schedule,
+    array: seats,
+    paymentMethod: payment_method,
+    token: user_token,
+  };
   const dispatch = useDispatch();
+  const scheduleData = useSelector(getSchedule);
+  const status = useSelector(getStatus);
   const navigate = useNavigate();
   const [web3Api, setWeb3Api] = useState({
     provider: null,
@@ -57,7 +70,12 @@ const PaymentMethod = () => {
       value: web3.utils.toWei("1", "ether"),
     });
     navigate("/ticket");
-  },[web3Api,account,navigate]);
+  }, [web3Api, account, navigate]);
+  useEffect(()=>{
+    if(status){
+      navigate('/ticket');
+    }
+  },[status,scheduleData,navigate])
   return (
     <div className="payment-method-section">
       <p className="bold-text">Payment Method</p>
@@ -272,19 +290,20 @@ const PaymentMethod = () => {
               >
                 Connect wallet
               </button>
-              <button onClick={addFunds}>
-                Transact
-              </button>
+              <button onClick={addFunds}>Transact</button>
             </div>
           </p>
         </div>
       </div>
       <div className="checkout">
         <button onClick={() => navigate(-1)}>Previous Step</button>
-        <button onClick={() => {
-          dispatch(postAsyncBookedSeats(schedule,seats,payment_method))
-          navigate("/ticket");
-          }}>Pay Your Order</button>
+        <button
+          onClick={() => {
+            dispatch(postAsyncBookedSeats(data));
+          }}
+        >
+          Pay Your Order
+        </button>
       </div>
     </div>
   );

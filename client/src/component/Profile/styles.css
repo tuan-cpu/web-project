@@ -1,0 +1,204 @@
+.img-avatar {
+    border-radius: 50% !important;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .img-profile {
+    /* margin-top:30px; */
+    border-radius: 50% !important;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    object-position: center;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 30px auto 20px auto;
+    display: block;
+  }
+  
+  .account:focus {
+    border-bottom: 2px solid #5f2eea;
+  }
+  .btn-update {
+    border-radius: 16px !important;
+  }
+  
+  .pg-bar {
+    background-color: #f5f6f8;
+    box-shadow: inset 0px 2px 4px rgba(17, 17, 17, 0.16);
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+  }
+  
+  .pg-bar .indicator {
+    border-radius: 10px;
+    height: 100%;
+    width: 50%;
+    background-color: #5f2eea;
+  }
+  .ticket-btn {
+    border-radius: 8px !important;
+    width: 30%;
+    font-size: 20px;
+    margin-top: 10px;
+    
+    height: min(50px,20vh);
+  }
+
+  .ticketInUse{
+    background: rgb(47, 231, 155);
+  }
+  .ticketused{
+    background: rgb(90, 112, 138);
+  }
+
+
+
+  .eachOrder{
+    margin-bottom: 50px;
+    color: aliceblue;
+    background-color:#f5f6f8;
+    padding: 20px;
+    border-radius: 10px;
+    height: 20vh;
+  }
+
+
+  .row .left{
+    /* margin-top: 60px; */
+    margin: 60px 0 0 60px;
+    width: 30%;
+    float: left;
+    background-color: #f5f6f8;
+    box-shadow: 0px 1px 2px rgb(0 0 0 );
+    border-radius: 10px 10px 10px 10px;
+    color:black;
+  }
+  .row .right{
+    margin: 60px 30px;
+    width: 55%;
+    float: right;
+    
+    border-radius: 10px 10px 10px 10px;
+    color:black;
+  }
+
+  .col-sm-4{
+    color: black!important;
+  }
+
+  
+
+  .row{
+    height: 3vh;
+    margin: 10px 20px 10px 20px;
+  }
+
+  .inforText{
+    
+    float:left;
+    color: black;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  #threedot{
+    float: right;
+    color: rgb(96, 0, 250);
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .name{
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  .career{
+    color: rgb(116, 112, 112);
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 20px ;
+    padding-bottom: 20px;
+  }
+
+  .pointTitle{
+    margin: 20px 0 20px 20px;
+  }
+
+ 
+
+
+
+
+  
+  .pointBody{
+    background: rgb(96, 0, 250);
+    margin: 20px 20px 0 20px;
+    border-radius: 20px 20px 20px 20px;
+    padding: 20px;
+  }
+
+
+  /* .pointBody p{
+    margin: 10px 0 0 10px;
+  } */
+
+  .pointNeed{
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .pointBar{
+    width: 80%;
+    margin: 15px 20px;
+  }
+
+
+
+
+/* ---------------------------------------------- */
+
+  .left-part-order{
+    width: 60%;
+    float: left;
+  }
+
+  .right-part-order{
+    width: 40%;
+    float: right;
+  }
+
+  .left-part-order .filmTitle{
+    
+    font-size: 20px;
+    font-weight: 600;
+
+  }
+  .right-part-order img{
+    width: 50%;
+    float: right;
+  }
+
+  .eachOrder hr{
+    width: 100%;
+    margin-top: 40px;
+  }
+
+
+  .blackText{
+    color: black;
+  }
+
+  .greyText{
+    color:#5b5b5c;
+  }
+  .greyBoldText{
+    color:#5b5b5c;
+    font-weight: 600;
+  }

@@ -42,7 +42,7 @@ router.post('/book', auth, async (req, res) => {
         await schedule.save()
         await user.save()
         await transaction.save()
-        res.status(201).send(transaction)
+        res.status(201).send(schedule)
 
     } catch (error) {
         res.status(400).send(error)

@@ -71,7 +71,11 @@ router.get('/movie/:id', async (req, res) => {
         console.log(movie.availableSchedule[i]["cinemaName"]);
         i++
     }
+<<<<<<< HEAD
     console.log(movie.availableSchedule[1]);
+=======
+    // console.log(movie.availableSchedule[1]);
+>>>>>>> 3496608b279df0a3f0504a80b9690f0d0853dea6
     try {
         res.status(201).send(movie)
 

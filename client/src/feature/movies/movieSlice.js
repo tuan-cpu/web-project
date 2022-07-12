@@ -54,29 +54,24 @@ const movieSlice = createSlice({
   },
   extraReducers: {
     [fetchAsyncMovies.pending]: (state) => {
-      console.log("Pending...");
       return { ...state, loader: true };
     },
     [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
-      console.log("Fetch successfully");
       return { ...state, movies: payload, loader: false };
     },
     [fetchAsyncMovies.rejected]: () => {
       console.log("Rejected");
     },
     [fetchAsyncUpcomingMovies.pending]: (state) => {
-      console.log("Pending...");
       return { ...state, loader: true };
     },
     [fetchAsyncUpcomingMovies.fulfilled]: (state, { payload }) => {
-      console.log("Fetch successfully");
       return { ...state, upcomingMovies: payload, loader: false };
     },
     [fetchAsyncUpcomingMovies.rejected]: () => {
       console.log("Rejected");
     },
     [fetchAsyncMovieOrShowDetail.fulfilled]: (state, { payload }) => {
-      console.log("Fetch successfully");
       return { ...state, selectMovieOrShow: payload };
     },
   },

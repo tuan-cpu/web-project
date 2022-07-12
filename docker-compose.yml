@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  mongo:
+    restart: always
+    container_name: mongo
+    image: 'mongo:4.1.3'
+    ports:
+      - "27017:27017"
+    networks:
+      - movie-app
+    volumes:
+      - ./db:/data/db
+
+  server:
+    restart: always
+    container_name: server
+    build: ./server
+    image: tungnt01011/server:latest
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    networks:
+      - movie-app
+  
+  client:
+    restart: always
+    container_name: client
+    build: ./client
+    image: tungnt01011/client:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - movie-app
+
+  nginx:
+    restart: always
+    container_name: nginx
+    build: ./nginx
+    image: tungnt01011/nginx:latest
+    ports: 
+      - "8080:80"
+    networks:
+      - movie-app
+
+networks:
+  movie-app:
+    driver: bridge

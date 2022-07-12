@@ -61,7 +61,7 @@ const Seat = (props) => {
       seatB.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`B${i}`)){
-      seatA.push(
+      seatB.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -94,7 +94,7 @@ const Seat = (props) => {
       seatC.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`C${i}`)){
-      seatA.push(
+      seatC.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -127,7 +127,7 @@ const Seat = (props) => {
       seatD.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`D${i}`)){
-      seatA.push(
+      seatD.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -160,7 +160,7 @@ const Seat = (props) => {
       seatE.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`E${i}`)){
-      seatA.push(
+      seatE.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -193,7 +193,7 @@ const Seat = (props) => {
       seatF.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`F${i}`)){
-      seatA.push(
+      seatF.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -226,7 +226,7 @@ const Seat = (props) => {
       seatG.push(<div className="px-3"></div>);
     }
     if(soldSeat.includes(`G${i}`)){
-      seatA.push(
+      seatG.push(
         <td>
           <input type='checkbox' disabled={true}/>
         </td>
@@ -308,9 +308,20 @@ const Seat = (props) => {
           <div className="soldBox" />
           Sold
         </div>
+      </div>
+      <p className="text-link-lg pt-4">Seat Price</p>
+      <div className="seat-key">
+        <div className="seat-key-element">
+          <div className="availableBox" />
+          Normal(A-B): 100k
+        </div>
+        <div className="seat-key-element">
+          <div className="vipBox" />
+          Vip(B-F): 120k
+        </div>
         <div className="seat-key-element">
           <div className="loveBox" />
-          Love nest
+          Love nest(G): 180k
         </div>
       </div>
     </div>

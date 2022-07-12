@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.scss';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
+import "./App.scss";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
 import Home from "./component/Home";
 import MovieDetail from "./component/MovieDetail";
@@ -12,6 +12,8 @@ import AllMovie from './component/AllMovie/AllMovie';
 import SignIn from './component/Auth/SignIn';
 import SignUp from './component/Auth/SignUp';
 import Recover from './component/Auth/Recover';
+
+import ProfilePage from './component/Profile/ProfilePage';
 
 
 function App() {
@@ -32,11 +34,10 @@ function App() {
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/recover' element={<Recover/>}/>
+        
+        <Route path='/profile' element={<ProfilePage/>}/>
         </Routes>
         </div>
-        <Routes>
-          
-        </Routes>
       </Router>
     </div>
   );
