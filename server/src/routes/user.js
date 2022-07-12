@@ -9,6 +9,10 @@ const Ward = require('../models/ward')
 const router = new express.Router()
 const auth = require('../middleware/auth')
 const Transaction = require('../models/transaction')
+const PaymentMethod = require('../models/paymentMethod')
+const Schedule = require('../models/schedule')
+const Cinema = require('../models/cinema')
+const Theater = require('../models/theater')
 // const { sendWelcomeEmail, sendResetpassEmail, sendFeedbackEmail } = require('../emails/account')
 
 router.post('/users/register', async (req, res) => {
@@ -26,7 +30,7 @@ router.post('/users/register', async (req, res) => {
 router.get('/user', auth, async (req, res) => {
     const userId = req.user._id
 
-    const user = await User.findById(userId).populate([
+    const userData = await User.findById(userId).populate([
         {
             path: "address.ward",
             model: Ward,
@@ -49,6 +53,41 @@ router.get('/user', auth, async (req, res) => {
             model: Transaction
         },
     ])
+    let i = 0
+    let user = JSON.parse(JSON.stringify(userData));
+    for await (let transactionId of user.transactionHistory) {
+        let transaction = await Transaction.findById(transactionId).populate([
+            {
+                path: "schedule", 
+                model: Schedule
+            },
+            // {
+            //     path: "schedule.movie", 
+            //     model: Movie
+            // },
+            // {
+            //     path: "schedule.cinema", 
+            //     model: Cinema
+            // },
+            {
+                path: "paymentMethod", 
+                model: PaymentMethod
+            }
+        ])
+        const movie = await Movie.findById(transaction.schedule.movie)
+        const cinema = await Cinema.findById(transaction.schedule.cinema).populate([
+            {
+                path: "theater",
+                model: Theater
+            }
+        ])
+        transaction.schedule.movie = movie
+        transaction.schedule.cinema = cinema
+        // console.log(movie);
+        user.transactionHistory[i] = transaction
+        // console.log(movie.availableSchedule[i]["cinemaName"]);
+        i++
+    }
 
     try {
         res.status(201).send(user)
