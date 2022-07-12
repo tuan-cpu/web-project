@@ -9,11 +9,12 @@ const SignUp = () => {
   const navigate = useNavigate();
   const isRegistering = useSelector(getRegisterState);
   const [name,setName] = useState("");
+  const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
   useEffect(() => {
     if(!isRegistering){
-      navigate('/signin');
+      // navigate('/signin');
     }
   }, [isRegistering]);
   return (
@@ -29,6 +30,15 @@ const SignUp = () => {
                 type={"email"}
                 className="form-control"
                 onInput={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Username</label>
+              <input
+                placeholder="Username"
+                type={"email"}
+                className="form-control"
+                onInput={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -53,7 +63,7 @@ const SignUp = () => {
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
-              dispatch(postAsyncRegister({email,name,password}));
+              dispatch(postAsyncRegister({email,name,username,password}));
             }}>Sign Up</button>
           </div>
         </div>

@@ -2,18 +2,21 @@ import React,{ useState, useEffect } from "react";
 import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postAsyncLogin,getUser } from "../../feature/auths/authSlice";
+import { postAsyncLogin,getUser,getLoginState } from "../../feature/auths/authSlice";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(getUser);
+  const isLogin = useSelector(getLoginState);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   useEffect(() => {
-    localStorage.setItem("user_token",user.token);
-    navigate('/');
-  }, [user]);
+    if(isLogin){
+      localStorage.setItem("user_token",user.token);
+      navigate(-1);
+    }
+  }, [user,isLogin]);
   return (
     <div className="sign-in-section">
       <div className="login-body">

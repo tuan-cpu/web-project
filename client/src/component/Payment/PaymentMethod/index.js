@@ -73,8 +73,6 @@ const PaymentMethod = () => {
   }, [web3Api, account, navigate]);
   useEffect(()=>{
     if(status){
-      console.log(status);
-      console.log(scheduleData);
       navigate('/ticket');
     }
   },[status,scheduleData,navigate])

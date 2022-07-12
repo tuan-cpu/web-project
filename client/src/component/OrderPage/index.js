@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAsyncMovieOrShowDetail,
@@ -11,6 +11,7 @@ import OrderSeat from "./OrderSeat";
 import OrderInfo from "./OrderInfo";
 
 const OrderPage = () => {
+  const navigate = useNavigate();
   const imdbID = localStorage.getItem('imdbID');
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
@@ -35,9 +36,17 @@ const OrderPage = () => {
           <Link to="/">
             <button>Change your movie</button>
           </Link>
-          <Link to="/payment">
-            <button disabled={selected.length === 0}>Checkout now</button>
-          </Link>
+          <button disabled={selected.length === 0}
+          onClick={()=>{
+            var token = localStorage.getItem("user_token");
+            console.log(token);
+            if(token === null || token === undefined){
+              alert("Please log in first!");
+              navigate('/signin');
+            }else{
+              navigate('/payment');
+            }
+          }}>Checkout now</button>
         </div>
       </div>
       <div className="order-section-right">

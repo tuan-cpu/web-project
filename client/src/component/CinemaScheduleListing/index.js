@@ -12,11 +12,12 @@ const CinemaScheduleListing = (props) => {
       data.availableSchedule.map((schedule, index) => {
         return (
           <div
+            key={index}
             className="single-schedule"
             onClick={() => {
               localStorage.setItem("schedule_id", schedule._id);
-              localStorage.setItem("date",schedule.timeStart);
-              localStorage.setItem("cinema_name",nameMap[schedule.cinema])
+              localStorage.setItem("date", schedule.timeStart);
+              localStorage.setItem("cinema_name", nameMap[schedule.cinema]);
               navigate("/order");
             }}
           >

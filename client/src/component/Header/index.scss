@@ -1,54 +1,75 @@
 @import "../../common/colors.scss";
 .header {
-    background-color: $secondary-color;
-    height: 72px;
-    padding: 0px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background-color: $secondary-color;
+  height: 72px;
+  padding: 0px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo{
-    color: $font-primary;
-    font-size: 20px;
-    font-weight: 600;
+.logo {
+  color: $font-primary;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.user-image, .user-image img{
-    width: 38px;
-    height: 38px;
+.user-image,
+.user-image img {
+  width: 38px;
+  height: 38px;
 }
 
-.search-bar{
-    width: 50%;
+.search-bar {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+  form {
     display: flex;
     justify-content: center;
+    width: 70%;
+  }
 
-    form{
-        display: flex;
-        justify-content: center;
-        width: 70%;
-    }
+  button {
+    padding: 0px 8px;
+    font-size: 20px;
+    cursor: pointer;
+    height: 38px;
+  }
 
-    button{
-        padding: 0px 8px;
-        font-size: 20px;
-        cursor: pointer;
-        height: 38px;
-    }
-
-    input{
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        font-size: 18px;
-        width: 100%;
-        padding: 5px 5px 5px 10px;
-        height: 38px;
-        outline: none;
-        color: black;
-    }
+  input {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-size: 18px;
+    width: 100%;
+    padding: 5px 5px 5px 10px;
+    height: 38px;
+    outline: none;
+    color: black;
+  }
 }
 
-.fa-search{
-    color: burlywood;
+.fa-search {
+  color: burlywood;
+}
+.auth {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 150px;
+  align-items: center;
+  button {
+    background: transparent;
+    border: 1px solid aqua;
+    border-radius: 16px;
+    height: 50px;
+    width: 120%;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(61, 113, 145);
+      transition: 0.7s;
+    }
+  }
 }

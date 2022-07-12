@@ -308,9 +308,20 @@ const Seat = (props) => {
           <div className="soldBox" />
           Sold
         </div>
+      </div>
+      <p className="text-link-lg pt-4">Seat Price</p>
+      <div className="seat-key">
+        <div className="seat-key-element">
+          <div className="availableBox" />
+          Normal(A-B): 100k
+        </div>
+        <div className="seat-key-element">
+          <div className="vipBox" />
+          Vip(B-F): 120k
+        </div>
         <div className="seat-key-element">
           <div className="loveBox" />
-          Love nest
+          Love nest(G): 180k
         </div>
       </div>
     </div>

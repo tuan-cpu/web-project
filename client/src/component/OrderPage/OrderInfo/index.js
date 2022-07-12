@@ -36,10 +36,6 @@ const OrderInfo = ({ movie,selected }) => {
             <Moment format="DD MMMM YYYY">{show_date}</Moment>
           </div>
           <div className="text-section">
-            <p>One ticket Price</p>
-            <p>Standard(A,B):100k | VIP(C-F): 120k | Love nest(G):180k</p>
-          </div>
-          <div className="text-section">
             <p>Seats</p>
             <p>{selected.map((seat)=> seat+' ')}</p>
           </div>

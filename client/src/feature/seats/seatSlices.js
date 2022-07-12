@@ -62,6 +62,9 @@ const seatSlices = createSlice({
     [postAsyncBookedSeats.fulfilled]: (state, { payload }) => {
       return { ...state, schedule: payload, bookingStatus:true };
     },
+    [postAsyncBookedSeats.rejected]: (state) => {
+      return { ...state, bookingStatus:false };
+    },
     [fetchAsyncSeats.fulfilled]: (state, { payload }) => {
       return { ...state, selectedSeats: payload };
     },
