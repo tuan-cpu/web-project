@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
             if (value.toLowerCase().includes('password')) {
                 throw new Error('Password cannot contain "password"')
             }
-            criteria = /^(?=.*\d)(?=.*[a-z])/
+            let criteria = /^(?=.*\d)(?=.*[a-z])/
             if (!value.match(criteria)) {
                 throw new Error('Password must contain both character and digit.')
             }

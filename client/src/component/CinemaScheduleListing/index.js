@@ -17,11 +17,11 @@ const CinemaScheduleListing = (props) => {
             onClick={() => {
               localStorage.setItem("schedule_id", schedule._id);
               localStorage.setItem("date", schedule.timeStart);
-              localStorage.setItem("cinema_name", nameMap[schedule.cinema]);
+              localStorage.setItem("cinema_name", schedule.cinemaName);
               navigate("/order");
             }}
           >
-            <p className="bold-big">{nameMap[schedule.cinema]}</p>
+            <p className="bold-big">{schedule.cinemaName}</p>
             <p className="bold-medium">
               <Moment format="DD/MM/YYYY">{schedule.timeStart}</Moment>
             </p>

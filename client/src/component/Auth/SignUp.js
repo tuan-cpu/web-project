@@ -12,11 +12,16 @@ const SignUp = () => {
   const [username,setUsername] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const [data,setData] = useState({});
   useEffect(() => {
-    if(!isRegistering){
-      // navigate('/signin');
-    }
-  }, [isRegistering]);
+    setData({
+      email: email,
+      name: name,
+      username: username,
+      password: password
+    })
+    console.log(data);
+  }, [email,name,username,password]);
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -63,7 +68,7 @@ const SignUp = () => {
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
-              dispatch(postAsyncRegister({email,name,username,password}));
+              dispatch(postAsyncRegister(data));
             }}>Sign Up</button>
           </div>
         </div>

@@ -1,0 +1,38 @@
+.content {
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 901px) {
+    display: flex;
+    flex-direction: row;
+  }
+  .left {
+    background-color: transparent;
+    border-radius: 24px;
+    border: 1px solid aqua;
+    color: white;
+    @media (max-width: 900px) {
+      margin-top: 60px;
+      width: 100%;
+    }
+    @media (min-width: 901px) {
+      margin: 60px 0 0 60px;
+      float: left;
+      width: 30%;
+    }
+  }
+  .right {
+    border-radius: 10px 10px 10px 10px;
+    color: black;
+    @media (max-width: 900px) {
+      margin-top: 30px;
+      width: 100%;
+    }
+    @media (min-width: 901px) {
+      margin: 60px 30px;
+      float: right;
+      width: 55%;
+    }
+  }
+}

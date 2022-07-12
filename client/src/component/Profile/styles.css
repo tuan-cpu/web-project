@@ -37,7 +37,7 @@
     border-radius: 10px;
     height: 100%;
     width: 50%;
-    background-color: #5f2eea;
+    background-color: lightslategray;
   }
   .ticket-btn {
     border-radius: 8px !important;
@@ -49,7 +49,7 @@
   }
 
   .ticketInUse{
-    background: rgb(47, 231, 155);
+    background: #79b8f3fa;
   }
   .ticketused{
     background: rgb(90, 112, 138);
@@ -60,9 +60,10 @@
   .eachOrder{
     margin-bottom: 50px;
     color: aliceblue;
-    background-color:#f5f6f8;
+    background-color:transparent;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 24px;
+	border: 1px solid aqua;
     height: 20vh;
   }
 
@@ -93,8 +94,8 @@
   
 
   .row{
-    height: 3vh;
-    margin: 10px 20px 10px 20px;
+    /* height: 3vh;
+    margin: 10px 20px 10px 20px; */
   }
 
   .inforText{
@@ -113,7 +114,6 @@
   }
 
   .name{
-    color: black;
     text-align: center;
     font-size: 30px;
     font-weight: 600;
@@ -138,16 +138,11 @@
 
   
   .pointBody{
-    background: rgb(96, 0, 250);
+    background: lightslategray;
     margin: 20px 20px 0 20px;
     border-radius: 20px 20px 20px 20px;
     padding: 20px;
   }
-
-
-  /* .pointBody p{
-    margin: 10px 0 0 10px;
-  } */
 
   .pointNeed{
     text-align: center;
@@ -192,13 +187,13 @@
 
 
   .blackText{
-    color: black;
+    color: white;
   }
 
   .greyText{
-    color:#5b5b5c;
+    color:whitesmoke;
   }
   .greyBoldText{
-    color:#5b5b5c;
+    color:whitesmoke;
     font-weight: 600;
   }
