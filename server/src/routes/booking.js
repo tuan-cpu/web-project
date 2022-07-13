@@ -12,7 +12,7 @@ router.post('/book', auth, async (req, res) => {
 
     const scheduleId = req.body.schedule
     const paymentMethodId = req.body.paymentMethod
-    const seats = req.body.seats
+    const seats = req.body.seats.split(",")
     const schedule = await Schedule.findById(scheduleId).populate([
         {
             path: "seats.seatType",
