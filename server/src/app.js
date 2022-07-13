@@ -10,6 +10,7 @@ const cinemaRouter = require('./routes/cinema')
 const scheduleRouter = require('./routes/schedule')
 const bookingRouter = require('./routes/booking')
 const locationRouter = require('./routes/location')
+const paymentMethodRouter = require('./routes/paymentMethod')
 const app = express()
 
 app.use(cors({
@@ -27,6 +28,7 @@ app.use('/api', scheduleRouter)
 app.use('/api', bookingRouter)
 app.use('/api', userRouter)
 app.use('/api', locationRouter)
+app.use('/api', paymentMethodRouter)
 
 module.exports = app
 
