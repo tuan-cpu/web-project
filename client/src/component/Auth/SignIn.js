@@ -1,20 +1,15 @@
 import React,{ useState, useEffect } from "react";
 import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { postAsyncLogin,getUser,getLoginState } from "../../feature/auths/authSlice";
 import movieApi from "../../common/api/movieApi";
 
 const SignIn = () => {
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const user = useSelector(getUser);
-  // const isLogin = useSelector(getLoginState);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin,setIsLogin] = useState(false);
   const [user,setUser] = useState({});
-  const [logged, setLogged] = useState(401);
+  const [status, setStatus] = useState(401);
   useEffect(() => {
     const login = async()=>{
       const res = await movieApi.post("users/login", {
@@ -22,8 +17,11 @@ const SignIn = () => {
         password: password,
       });
       setUser(res.data);
+      setStatus(res.status);
     }
-    login();
+    if(username!==null && password!==null){
+      login();
+    }
   }, [isLogin]);
   useEffect(() => {
     const auth = async () => {
@@ -32,20 +30,19 @@ const SignIn = () => {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
       });
-      setLogged(res.status);
+      setStatus(res.status);
     };
     auth();
   }, [localStorage.getItem("user_token")]);
   useEffect(()=>{
-    if(user !== undefined){
+    if(user !== undefined && user !== null){
       localStorage.setItem("user_token",user.token);
+      if(status === 200){
+        alert("Log in successful");
+        navigate(-1);
+      }
     }
-  },[user])
-  // useEffect(()=>{
-  //   if(logged === 201 && localStorage.getItem("user_token")!==undefined){
-  //     navigate('/');
-  //   }
-  // },[logged])
+  },[user,status])
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -74,7 +71,6 @@ const SignIn = () => {
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
-              // dispatch(postAsyncLogin({username,password}));
               setIsLogin(true);
             }}>Sign In</button>
           </div>

@@ -15,7 +15,7 @@ const SignUp = () => {
   const [phone,setPhone] = useState("");
   const [data,setData] = useState({});
   const [submit,setSubmit] = useState(false);
-  const [response,setRes] = useState({});
+  const [status,setStatus] = useState(401);
   useEffect(() => {
     setData({
       email: email,
@@ -34,17 +34,17 @@ const SignUp = () => {
           username: data.username,
           phoneNumber: data.phoneNumber
         });
-        setRes(res.data);
+        setStatus(res.status);
     }
     if(data !== null){
       signup();
     }
   },[submit])
   useEffect(()=>{
-    if(response !== null && response !== undefined){
-      // navigate('/signin');
+    if(status === 201){
+      navigate('/signin');
     }
-  },[response])
+  },[status])
   return (
     <div className="sign-in-section">
       <div className="login-body">
