@@ -75,6 +75,15 @@ router.get('/movie/:id', async (req, res) => {
         console.log(movie.availableSchedule[i]["cinemaName"]);
         i++
     }
+
+    movie.availableSchedule.sort(function(a, b) {
+        var keyA = new Date(a.timeStart),
+            keyB = new Date(b.timeStart);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+      });
     // console.log(movie.availableSchedule[1]);
     try {
         res.status(201).send(movie)
