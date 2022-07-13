@@ -16,7 +16,7 @@ router.get('/movies?', async (req, res) => {
         query.limit = 10
     }
     if (query.title) {
-        query.title = { "$regex": query.title }
+        query.title = { "$regex": query.title, '$options' : 'i' }
         
     }
     if (query.genre) {
@@ -92,7 +92,7 @@ router.get('/upcoming?', async (req, res) => {
         query.limit = 10
     }
     if (query.title) {
-        query.title = { "$regex": query.title }
+        query.title = { "$regex": query.title, '$options' : 'i' }
     }
 
     if (query.genre) {
@@ -136,7 +136,7 @@ router.get('/nowplaying?', async (req, res) => {
         query.limit = 10
     }
     if (query.title) {
-        query.title = { "$regex": query.title }
+        query.title = { "$regex": query.title, '$options' : 'i' }
         
     }
 
