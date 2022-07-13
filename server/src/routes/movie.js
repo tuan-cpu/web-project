@@ -72,6 +72,8 @@ router.get('/movie/:id', async (req, res) => {
         const cinemaName = await Cinema.findById(schedule.cinema)
         // console.log(cinemaName.name);
         movie.availableSchedule[i].cinemaName = cinemaName.name
+        movie.availableSchedule[i].timeStart = subtractHour(movie.availableSchedule[i].timeStart, 7);
+        movie.availableSchedule[i].timeEnd = subtractHour(movie.availableSchedule[i].timeEnd, 7);
         console.log(movie.availableSchedule[i]["cinemaName"]);
         i++
     }
@@ -273,6 +275,11 @@ router.post('/movie', auth, async (req, res) => {
 
 function addDays(date, days) {
     return new Date(date.getTime() + days);
+}
+
+function subtractHour(dateStr, hours) {
+    const date = new Date(dateStr)
+    return new Date(date.getTime() - hours*3600000);
 }
 
 module.exports = router
