@@ -3,6 +3,7 @@ import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { postAsyncRegister } from "../../feature/auths/authSlice";
+import movieApi from "../../common/api/movieApi";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const SignUp = () => {
   const [password,setPassword] = useState("");
   const [phone,setPhone] = useState("");
   const [data,setData] = useState({});
+  const [submit,setSubmit] = useState(false);
+  const [response,setRes] = useState({});
   useEffect(() => {
     setData({
       email: email,
@@ -21,7 +24,27 @@ const SignUp = () => {
       password: password,
       phoneNumber: phone
     })
-  }, [email,name,username,password]);
+  }, [email,name,username,password,phone]);
+  useEffect(()=>{
+    const signup = async() =>{
+        const res = await movieApi.post("users/register", {
+          email: data.email,
+          name: data.name,
+          password: data.password,
+          username: data.username,
+          phoneNumber: data.phoneNumber
+        });
+        setRes(res.data);
+    }
+    if(data !== null){
+      signup();
+    }
+  },[submit])
+  useEffect(()=>{
+    if(response !== null && response !== undefined){
+      // navigate('/signin');
+    }
+  },[response])
   return (
     <div className="sign-in-section">
       <div className="login-body">
@@ -77,9 +100,7 @@ const SignUp = () => {
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
-              dispatch(postAsyncRegister(data));
-              alert("Sign up successful");
-              navigate('/signin');
+              setSubmit(true);
             }}>Sign Up</button>
           </div>
         </div>

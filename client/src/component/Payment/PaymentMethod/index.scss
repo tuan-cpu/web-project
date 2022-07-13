@@ -41,6 +41,13 @@
             border-radius: 15px;
             height: 56px;
             background-color: white;
+            img {
+              vertical-align: middle;
+              border-style: none;
+              height: 200%;
+              width: 200%;
+              cursor: pointer;
+            }
           }
         }
       }

@@ -10,11 +10,11 @@ import {
 import Moment from 'react-moment';
 
 const Ticket = () => {
-  var seat = localStorage.getItem('seats');
-  var seat_count = localStorage.getItem('seat_count');
-  var total_payment = localStorage.getItem('total_payment');
-  var show_date = localStorage.getItem('date');
-  var cinema_name = localStorage.getItem('cinema_name');
+  let seat = localStorage.getItem('seats');
+  let seat_count = localStorage.getItem('seat_count');
+  let total_payment = localStorage.getItem('total_payment');
+  let show_date = localStorage.getItem('date');
+  let cinema_name = localStorage.getItem('cinema_name');
   const imdbID = localStorage.getItem('imdbID');
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
