@@ -72,8 +72,9 @@ const PaymentMethod = () => {
     dispatch(postAsyncBookedSeats(data));
     // navigate("/ticket");
   }, [web3Api, account, navigate]);
+  const [confirm,setConfirm] = useState(false);
   useEffect(()=>{
-    if(status){
+    if(status && confirm){
       navigate('/ticket');
     }
   },[status,scheduleData,navigate])
@@ -301,6 +302,7 @@ const PaymentMethod = () => {
         <button
           onClick={() => {
             dispatch(postAsyncBookedSeats(data));
+            setConfirm(!confirm);
           }}
         >
           Pay Your Order

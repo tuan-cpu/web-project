@@ -48,7 +48,7 @@ const Ticket = () => {
                         </div>
                         <div className="col-4">
                           <p className="info">Time</p>
-                          <Moment format="hh:mm" className="info-value">{show_date}</Moment>
+                          <Moment format="HH:mm" className="info-value">{show_date}</Moment>
                         </div>
                         <div className="col-4">
                           <p className="info">Category</p>
@@ -88,7 +88,7 @@ const Ticket = () => {
                           </div>
                           <div className="col-6">
                             <p className="info">Time</p>
-                            <Moment format="hh:mm" className="info-value">{show_date}</Moment>
+                            <Moment format="HH:mm" className="info-value">{show_date}</Moment>
                           </div>
                           <div className="col-6">
                             <p className="info">Category</p>
