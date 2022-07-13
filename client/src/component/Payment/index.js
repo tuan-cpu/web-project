@@ -1,7 +1,6 @@
 import React from "react";
 import PaymentInfo from "./PaymentInfo";
 import PaymentMethod from "./PaymentMethod";
-// import PersonalInfo from "./PersonalInfo";
 import "./index.scss";
 
 const Payment = () => {
@@ -10,9 +9,6 @@ const Payment = () => {
       <div className="section-wrapper">
         <PaymentInfo />
       </div>
-      {/* <div className="section-wrapper">
-        <PersonalInfo />
-      </div> */}
       <div className="section-wrapper">
         <PaymentMethod />
       </div>

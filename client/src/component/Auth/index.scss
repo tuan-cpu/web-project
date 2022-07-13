@@ -46,4 +46,22 @@
 form {
   display: block;
   margin-top: 0em;
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    label{
+      font-size: 20px;
+      font-weight: 600;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    input{
+      height: 56px;
+      border: 1px solid aqua;
+      background-color: transparent;
+      border-radius: 16px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
 }
