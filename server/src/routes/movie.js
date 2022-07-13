@@ -204,7 +204,7 @@ router.post('/movie', auth, async (req, res) => {
 
     release_dates = movieData.release_dates.results.filter(obj => obj.iso_3166_1 == 'US')
     certification = ""
-    if (release_dates) {
+    if (release_dates.length > 0) {
         for (const loc of release_dates[0].release_dates) {
             if (loc.certification != "") {
                 certification = loc.certification
