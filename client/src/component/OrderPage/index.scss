@@ -2,12 +2,12 @@
 
 .order-section{
     display: grid;
-    grid-template-columns: 40% 35%;
+    grid-template-columns: 60% 35%;
     justify-content: space-between;
     padding: 40px 0px;
     color: $font-primary;
     font-weight: 400;
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
         display: flex;
         flex-direction: column;
     }

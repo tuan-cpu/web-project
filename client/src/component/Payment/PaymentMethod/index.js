@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import ZaloPay from "../../../image/zalo-pay.svg";
 import Momo from "../../../image/logo-momo.svg";
+import Viettel from "../../../image/logo_viettel_money.svg";
 import paymentMap from "../../../common/payment/paymentMethod.js";
 
 const PaymentMethod = () => {
@@ -124,6 +125,20 @@ const PaymentMethod = () => {
                     }}
                   >
                     <img src={Momo} />
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="icon-wrapper">
+              <div className="card-pay">
+                <div className={activeMethod === "viettel" ? "icon-active" : "icon"}>
+                  <button
+                    onClick={() => {
+                      setMethod(paymentMap["Viettel"]);
+                      setActiveMethod("viettel");
+                    }}
+                  >
+                    <img src={Viettel} />
                   </button>
                 </div>
               </div>

@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAsyncAuth, getUser } from "../../../feature/auths/authSlice";
 
 const PersonalInfo = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [valid, setValid] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector(getUser);
+  useEffect(()=>{
+    dispatch(fetchAsyncAuth(localStorage.getItem("user_token")))
+  },[dispatch,localStorage.getItem("user_token")]);
   useEffect(() => {
-    if (name !== "" && email !== "" && phone !== "") {
-      setValid(true);
-      localStorage.setItem("customer_name", name);
-      localStorage.setItem("customer_email", email);
-      localStorage.setItem("customer_phone", phone);
-    } else {
-      setValid(false);
-      localStorage.removeItem("customer_name");
-      localStorage.removeItem("customer_email");
-      localStorage.removeItem("customer_phone");
-    }
-  }, [name, email, phone]);
+    // if (name !== "" && email !== "" && phone !== "") {
+    //   setValid(true);
+    //   localStorage.setItem("customer_name", name);
+    //   localStorage.setItem("customer_email", email);
+    //   localStorage.setItem("customer_phone", phone);
+    // } else {
+    //   setValid(false);
+    //   localStorage.removeItem("customer_name");
+    //   localStorage.removeItem("customer_email");
+    //   localStorage.removeItem("customer_phone");
+    // }
+    // setName(user?.name);
+    // setPhone(user?.phoneNumber?.substring(1));
+    // setEmail(user?.email);
+    console.log(user);
+  }, [user]);
   return (
     <div className="personal-info-section">
       <p className="bold-text">Personal Info</p>
