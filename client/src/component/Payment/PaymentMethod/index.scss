@@ -41,12 +41,39 @@
             border-radius: 15px;
             height: 56px;
             background-color: white;
-            img {
-              vertical-align: middle;
-              border-style: none;
-              height: 200%;
-              width: 200%;
-              cursor: pointer;
+            button{
+              width: inherit;
+              height: inherit;
+              img {
+                vertical-align: middle;
+                border-style: none;
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+              }
+            }
+          }
+          .icon-active {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1.25rem;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid aqua;
+            border-radius: 15px;
+            height: 56px;
+            background-color: lightblue;
+            button{
+              width: inherit;
+              height: inherit;
+              img {
+                vertical-align: middle;
+                border-style: none;
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+              }
             }
           }
         }

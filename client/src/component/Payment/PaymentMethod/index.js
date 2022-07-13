@@ -7,18 +7,18 @@ import { loadContract } from "../../../utils/load-contracts";
 import {
   getSchedule,
   postAsyncBookedSeats,
-  getStatus
+  getStatus,
 } from "../../../feature/seats/seatSlices";
 import { useDispatch, useSelector } from "react-redux";
-import ZaloPay from '../../../image/zalo-pay.svg';
-import Momo from '../../../image/logo-momo.svg';
-import paymentMap from '../../../common/payment/paymentMethod.js';
+import ZaloPay from "../../../image/zalo-pay.svg";
+import Momo from "../../../image/logo-momo.svg";
+import paymentMap from "../../../common/payment/paymentMethod.js";
 
 const PaymentMethod = () => {
   let seats = localStorage.getItem("seats");
   let schedule = localStorage.getItem("schedule_id");
   // let payment_method = "62ac2196c719c9ecd0f1cd75";
-  const [payment_method,setMethod] = useState('');
+  const [payment_method, setMethod] = useState("");
   let user_token = localStorage.getItem("user_token");
   // const data = {
   //   schedule: schedule,
@@ -26,7 +26,7 @@ const PaymentMethod = () => {
   //   paymentMethod: payment_method,
   //   token: user_token,
   // };
-  const [data,setData] = useState({});
+  const [data, setData] = useState({});
   const dispatch = useDispatch();
   const scheduleData = useSelector(getSchedule);
   const status = useSelector(getStatus);
@@ -38,6 +38,7 @@ const PaymentMethod = () => {
   });
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [activeMethod, setActiveMethod] = useState("");
 
   useEffect(() => {
     const loadProvider = async () => {
@@ -77,13 +78,13 @@ const PaymentMethod = () => {
     // setMethod(paymentMap['meta']);
     // navigate("/ticket");
   }, [web3Api, account, navigate]);
-  const [confirm,setConfirm] = useState(false);
-  useEffect(()=>{
-    if(status && confirm){
-      navigate('/ticket');
+  const [confirm, setConfirm] = useState(false);
+  useEffect(() => {
+    if (status && confirm) {
+      navigate("/ticket");
     }
-  },[status,scheduleData,navigate])
-  useEffect(()=>{
+  }, [status, scheduleData, navigate]);
+  useEffect(() => {
     console.log(payment_method);
     const temp = {
       schedule: schedule,
@@ -92,7 +93,7 @@ const PaymentMethod = () => {
       token: user_token,
     };
     setData(temp);
-  },[payment_method]);
+  }, [payment_method]);
   return (
     <div className="payment-method-section">
       <p className="bold-text">Payment Method</p>
@@ -101,19 +102,29 @@ const PaymentMethod = () => {
           <div className="row">
             <div className="icon-wrapper">
               <div className="card-pay">
-                <div className="icon" onClick={()=>{
-                  setMethod(paymentMap['Zalo']);
-                }}>
-                  <img src={ZaloPay} className="active"/>
+                <div className={activeMethod === "zalo" ? "icon-active" : "icon"}>
+                  <button
+                    onClick={() => {
+                      setMethod(paymentMap["Zalo"]);
+                      setActiveMethod("zalo");
+                    }}
+                  >
+                    <img src={ZaloPay} />
+                  </button>
                 </div>
               </div>
             </div>
             <div className="icon-wrapper">
               <div className="card-pay">
-                <div className="icon"onClick={()=>{
-                  setMethod(paymentMap['Momo']);
-                }}>
-                  <img src={Momo}/>
+                <div className={activeMethod === "momo" ? "icon-active" : "icon"}>
+                  <button
+                    onClick={() => {
+                      setMethod(paymentMap["Momo"]);
+                      setActiveMethod("momo");
+                    }}
+                  >
+                    <img src={Momo} />
+                  </button>
                 </div>
               </div>
             </div>
