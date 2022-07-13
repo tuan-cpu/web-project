@@ -157,7 +157,9 @@ router.get('/nowplaying?', async (req, res) => {
         sort["released"] = 'asc'
     }
 
-    const movieInSchedule = await Schedule.find().select('movie').distinct('movie')
+    const movieInSchedule = await Schedule.find({
+        "timeStart": {"$gt" : new Date()}
+    }).select('movie').distinct('movie')
 
     query['_id'] = {$in: movieInSchedule}
 
