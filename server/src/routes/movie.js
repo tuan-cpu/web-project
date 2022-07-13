@@ -21,11 +21,11 @@ router.get('/movies?', async (req, res) => {
     }
     if (query.genre) {
         const genresQuery = query.genre.split(',') 
-        var genresObjId = await Genre.find({
+        let genresObjId = await Genre.find({
             "name": { $in: genresQuery}
         }, '_id')
 
-        var genresId = genresObjId.map(a => a._id)
+        let genresId = genresObjId.map(a => a._id)
         query["genre"] = {$all: genresId}
     }
     if (req.query.sortBy) {

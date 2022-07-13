@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.scss";
 import Moment from "react-moment";
+import 'moment-timezone';
 import { useNavigate } from "react-router-dom";
-import nameMap from "../../common/cinema/cinemaName";
 const CinemaScheduleListing = (props) => {
   const { data } = props;
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ const CinemaScheduleListing = (props) => {
               <Moment format="DD/MM/YYYY">{schedule.timeStart}</Moment>
             </p>
             <p>
-              <Moment format="hh:mm">{schedule.timeStart}</Moment>-
-              <Moment format="hh:mm">{schedule.timeEnd}</Moment>
+              <Moment format="HH:mm">{schedule.timeStart}</Moment>-
+              <Moment format="HH:mm">{schedule.timeEnd}</Moment>
             </p>
           </div>
         );

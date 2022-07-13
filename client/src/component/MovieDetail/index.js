@@ -10,6 +10,7 @@ import {
 import Moment from "react-moment";
 import YoutubeEmbed from "./YoutubeEmbed";
 import CinemaScheduleListing from "../CinemaScheduleListing";
+import moment from "moment";
 
 const MovieDetail = () => {
   const { imdbID } = useParams();
@@ -21,6 +22,8 @@ const MovieDetail = () => {
       dispatch(removeSelectedMovieOrShow);
     };
   }, [dispatch, imdbID]);
+  let date = moment().format('YYYY-MM-DDTHH:mm:ss.000Z');
+  console.log(date);
   return (
     <div className="movie-section">
       {Object.keys(data).length === 0 ? (

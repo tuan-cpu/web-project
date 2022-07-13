@@ -8,16 +8,23 @@ import movieApi from "../../common/api/movieApi";
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(getUser);
-  const isLogin = useSelector(getLoginState);
+  // const user = useSelector(getUser);
+  // const isLogin = useSelector(getLoginState);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  useEffect(() => {
-    if(isLogin){
-      localStorage.setItem("user_token",user.token);
-    }
-  }, [isLogin]);
+  const [isLogin,setIsLogin] = useState(false);
+  const [user,setUser] = useState({});
   const [logged, setLogged] = useState(401);
+  useEffect(() => {
+    const login = async()=>{
+      const res = await movieApi.post("users/login", {
+        username: username,
+        password: password,
+      });
+      setUser(res.data);
+    }
+    login();
+  }, [isLogin]);
   useEffect(() => {
     const auth = async () => {
       const res = await movieApi.get("user", {
@@ -30,8 +37,12 @@ const SignIn = () => {
     auth();
   }, [localStorage.getItem("user_token")]);
   useEffect(()=>{
+    localStorage.setItem("user_token",user.token);
+    setLogged(201);
+  },[user])
+  useEffect(()=>{
     if(logged === 201){
-      navigate(-1);
+      navigate('/');
     }
   },[logged])
   return (
@@ -62,7 +73,8 @@ const SignIn = () => {
           <div className="checkout">
             <button onClick={() => navigate(-1)}>Cancel</button>
             <button onClick={()=>{
-              dispatch(postAsyncLogin({username,password}));
+              // dispatch(postAsyncLogin({username,password}));
+              setIsLogin(true);
             }}>Sign In</button>
           </div>
           <Link to="/signup">

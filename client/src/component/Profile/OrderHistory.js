@@ -19,7 +19,7 @@ const OrderHistory = (props) => {
                     {ticket.schedule.timeStart}
                   </Moment>
                   {' '}
-                  <Moment format="hh:mm">
+                  <Moment format="HH:mm">
                     {ticket.schedule.timeStart}
                   </Moment>
                   <p>
