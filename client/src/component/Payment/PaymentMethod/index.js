@@ -159,7 +159,10 @@ const PaymentMethod = () => {
               >
                 Connect wallet
               </button>
-              <button onClick={addFunds}>Transact</button>
+              <button onClick={()=>{
+                addFunds();
+                setMethod(paymentMap['meta']);
+                }}>Transact</button>
             </div>
           </p>
         </div>
